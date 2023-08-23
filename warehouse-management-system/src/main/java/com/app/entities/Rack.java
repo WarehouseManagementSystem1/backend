@@ -1,4 +1,4 @@
-package com.app.warehouseEntities;
+package com.app.entities;
 
 import java.util.ArrayList;
 
@@ -6,6 +6,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -23,25 +24,23 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 
-public class Warehouse extends BaseEntity {
+public class Rack extends BaseEntity {
 	
-	@Column(length = 50)
-	private String name;
+	@Column
+	private String rackNumber;
 	
-	@Column(length = 100)
-	private String address;
+	@ManyToOne
+	@JoinColumn(name = "Area_Id")
+	private Area area;
+
+	@OneToMany(mappedBy = "rack", cascade = CascadeType.ALL, orphanRemoval = true)
+	private ArrayList<Level> levels = new ArrayList<Level>(); 
 	
-	//----------------------------------ye krna hai re bhai
-	//private Owner ownerId;
-	
-	@OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Area> areas = new ArrayList<Area>();
-	
-	@OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "rack", cascade =CascadeType.ALL, orphanRemoval = true)
 	private ArrayList<Block> blocks = new ArrayList<Block>();
 	
-	@OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "rack", cascade =CascadeType.ALL, orphanRemoval = true)
 	private ArrayList<Item> items = new ArrayList<Item>();
- 	
-
+	
+	
 }

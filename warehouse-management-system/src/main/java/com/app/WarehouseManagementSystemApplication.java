@@ -1,4 +1,4 @@
-package com.pgdac41.warehousemanagementsystem;
+package com.app;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
