@@ -1,10 +1,11 @@
-package com.app.warehouseEntities;
+package com.app.entities;
 
 import java.util.ArrayList;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -24,23 +25,44 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 
-public class Rack extends BaseEntity {
+public class Block extends BaseEntity {
 	
 	@Column
-	private String rackNumber;
+	private String blockNumber;
+	
+	@Column
+	private float blockLength;
+	
+	@Column
+	private float blockWidth;
+	
+	@Column
+	private float occupiedLength;
+	
+	@Column
+	private float occupiedWidth;
+	
+	@Column
+	@Enumerated
+	private OccupiedLevel occupiedLevel;;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "Level_Id")
+	private Level level;
+	
+	@ManyToOne
+	@JoinColumn(name = "Rack_Id")
+	private Rack rack;
 	
 	@ManyToOne
 	@JoinColumn(name = "Area_Id")
 	private Area area;
+	
+	@ManyToOne
+	@JoinColumn(name = "Warehouse_Id")
+	private Warehouse warehouse;
 
-	@OneToMany(mappedBy = "rack", cascade = CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Level> levels = new ArrayList<Level>(); 
-	
-	@OneToMany(mappedBy = "rack", cascade =CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Block> blocks = new ArrayList<Block>();
-	
-	@OneToMany(mappedBy = "rack", cascade =CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "block", cascade = CascadeType.ALL, orphanRemoval = true)
 	private ArrayList<Item> items = new ArrayList<Item>();
-	
-	
 }
