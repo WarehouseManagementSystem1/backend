@@ -3,6 +3,7 @@ package com.app.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "")
+@Table
 
 @Getter
 @Setter
@@ -21,8 +22,7 @@ import lombok.ToString;
 
 public class User extends BaseEntity  {
 	
-	@Column(name = "User_Id")
-	private int userId;
+	
 	
 	@Column(name = "User_Name", length = 30)
 	private String name;
@@ -37,8 +37,10 @@ public class User extends BaseEntity  {
 	@Enumerated
 	private UserType user;
 	
-	//Mapping has to be done here
-	@Column
-	private int wareHouseID;
+	@Column(name="password")
+	private String password;
+	
+	
+	
 
 }
