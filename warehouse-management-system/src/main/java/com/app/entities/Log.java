@@ -55,6 +55,30 @@ public class Log extends BaseEntity {
 	@Column
 	private int finalBlockId;
 
+	public Log(Long id, String transactionType, int warehouseId, String itemName, int itemId, int initialAreaId,
+			int initialRackId, int initialLevelId, int initialBlockId, int finalAreaId, int finalRackId,
+			int finalLevelId, int finalBlockId) {
+		super(id);
+		this.transactionType = transactionType;
+		this.warehouseId = warehouseId;
+		this.itemName = itemName;
+		this.itemId = itemId;
+		this.initialAreaId = initialAreaId;
+		this.initialRackId = initialRackId;
+		this.initialLevelId = initialLevelId;
+		this.initialBlockId = initialBlockId;
+		this.finalAreaId = finalAreaId;
+		this.finalRackId = finalRackId;
+		this.finalLevelId = finalLevelId;
+		this.finalBlockId = finalBlockId;
+	}
+
+	public Log(Long id) {
+		super(id);
+		
+	}
+
+	
 }
 
 

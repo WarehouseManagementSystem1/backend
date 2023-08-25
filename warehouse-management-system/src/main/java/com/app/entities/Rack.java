@@ -50,6 +50,27 @@ public class Rack extends BaseEntity {
 	//mapping for rack and ITEM
 	@OneToMany(mappedBy = "rack", cascade =CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Item> items ;
+
+
+	public Rack(Long id, String rackNumber, Area area, List<Level> levels, List<Block> blocks, List<Item> items) {
+		super(id);
+		this.rackNumber = rackNumber;
+		this.area = area;
+		this.levels = levels;
+		this.blocks = blocks;
+		this.items = items;
+	}
+
+
+	public Rack(Long id) {
+		super(id);
+	}
+
+
+	public Rack() {
+		super();
+	}
+	
 	
 	
 }

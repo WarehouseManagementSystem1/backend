@@ -51,6 +51,28 @@ public class Area extends BaseEntity {
 	//mapping between area and ITEM
 	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Item> items ;
+
+
+	public Area(Long id, String areaName, Warehouse warehouse, List<Rack> racks, List<Block> blocks, List<Item> items) {
+		super(id);
+		this.areaName = areaName;
+		this.warehouse = warehouse;
+		this.racks = racks;
+		this.blocks = blocks;
+		this.items = items;
+	}
+
+
+	public Area(Long id) {
+		super(id);
+		
+	}
+
+
+	public Area() {
+		super();
+	}
+	
 	
 	
 
