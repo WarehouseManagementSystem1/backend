@@ -1,10 +1,12 @@
 package com.app.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -29,17 +31,19 @@ public class Area extends BaseEntity {
 	@Column(nullable = false)
 	private String areaName;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "warehouse_Id")
 	private Warehouse warehouse;
 	
-	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Rack> racks = new ArrayList<Rack>();
+	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<Rack> racks;
 	
-	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Block> blocks = new ArrayList<Block>();
+	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<Block> blocks ;
 
-	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Item> items = new ArrayList<Item>();
+	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<Item> items ;
+	
+	
 
 }

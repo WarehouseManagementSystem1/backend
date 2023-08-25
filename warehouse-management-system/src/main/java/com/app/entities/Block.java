@@ -1,11 +1,12 @@
 package com.app.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -37,32 +38,25 @@ public class Block extends BaseEntity {
 	private float blockWidth;
 	
 	@Column
-	private float occupiedLength;
-	
-	@Column
-	private float occupiedWidth;
-	
-	@Column
-	@Enumerated
-	private OccupiedLevel occupiedLevel;;
+	private OccupiedLevel occupiedStatus;
 	
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Level_Id")
 	private Level level;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Rack_Id")
 	private Rack rack;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Area_Id")
 	private Area area;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Warehouse_Id")
 	private Warehouse warehouse;
 
-	@OneToMany(mappedBy = "block", cascade = CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Item> items = new ArrayList<Item>();
+	@OneToMany(mappedBy = "block", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<Item> items = new ArrayList<Item>();
 }
