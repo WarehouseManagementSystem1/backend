@@ -1,6 +1,6 @@
 package com.app.entities;
 
 public enum UserType {
-	ADMIN, USER,AUDITOR
+	ADMIN, USER, AUDITOR
 
 }

@@ -41,10 +41,13 @@ public class Block extends BaseEntity {
 	private OccupiedLevel occupiedStatus;
 	
 	
+	//mapping between block and LEVEL
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Level_Id")
 	private Level level;
 	
+	
+	//mapping between block and RACK
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Rack_Id")
 	private Rack rack;
@@ -53,10 +56,14 @@ public class Block extends BaseEntity {
 	@JoinColumn(name = "Area_Id")
 	private Area area;
 	
+	
+	//mapping between block and WAREHOUSE
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Warehouse_Id")
 	private Warehouse warehouse;
 
+	
+	//mapping between block and ITEM
 	@OneToMany(mappedBy = "block", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Item> items = new ArrayList<Item>();
 }

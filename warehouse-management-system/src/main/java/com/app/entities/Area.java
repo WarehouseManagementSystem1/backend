@@ -31,16 +31,24 @@ public class Area extends BaseEntity {
 	@Column(nullable = false)
 	private String areaName;
 	
+	
+	//mapping between area and WAREHOUSE 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "warehouse_Id")
 	private Warehouse warehouse;
 	
+	
+	//mapping between area and RACK
 	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Rack> racks;
 	
+	
+	//mapping between area and BLOCK
 	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Block> blocks ;
 
+	
+	//mapping between area and ITEM
 	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Item> items ;
 	
