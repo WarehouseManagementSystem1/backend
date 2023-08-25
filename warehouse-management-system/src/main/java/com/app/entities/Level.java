@@ -1,10 +1,11 @@
 package com.app.entities;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -32,15 +33,15 @@ public class Level extends BaseEntity{
 	@Column
 	private float levelHeight;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Rack_Id")
 	private Rack rack;
 	
 	
-	@OneToMany(mappedBy = "level", cascade = CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Block> levels = new ArrayList<Block>();
+	@OneToMany(mappedBy = "level", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<Block> levels ;
 	
-	@OneToMany(mappedBy = "level", cascade = CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Item> items = new ArrayList<Item>();
+	@OneToMany(mappedBy = "level", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<Item> items ;
 
 }

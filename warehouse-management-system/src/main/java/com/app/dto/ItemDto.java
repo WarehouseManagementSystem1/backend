@@ -31,14 +31,7 @@ public class ItemDto {
 	}
 
 
-	public String getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
 
 
 	public Long getBlockId() {
@@ -95,7 +88,7 @@ public class ItemDto {
 	
 	private int units;
 	
-	private String status;
+	
 	
 
 	private Long blockId;
