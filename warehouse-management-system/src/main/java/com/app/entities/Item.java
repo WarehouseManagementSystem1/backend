@@ -109,25 +109,31 @@ public class Item extends BaseEntity {
 	private float unitHeight;
 	
 	
-	
-	
-	
+	//mapping for item and BLOCK 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Block_Id")
 	private Block block;
 	
+	
+	//mapping for item and LEVEL 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Level_Id")
 	private Level level;
 	
+	
+	//mapping for item and RACK
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Rack_Id")
 	private Rack rack;
 	
+	
+	//mapping for item and AREA
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Area_Id")
 	private Area area;
 	
+	
+	//mapping for item and WAREHOUSE
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Warehouse_Id")
 	private Warehouse warehouse;

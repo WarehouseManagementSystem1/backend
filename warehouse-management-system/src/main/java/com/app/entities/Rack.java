@@ -30,16 +30,24 @@ public class Rack extends BaseEntity {
 	@Column
 	private String rackNumber;
 	
+	
+	//mapping for rack and AREA
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Area_Id")
 	private Area area;
 
+	
+	//mapping for rack and LEVEL
 	@OneToMany(mappedBy = "rack", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Level> levels ; 
 	
+	
+	//mapping for rack and BLOCK
 	@OneToMany(mappedBy = "rack", cascade =CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Block> blocks ;
 	
+	
+	//mapping for rack and ITEM
 	@OneToMany(mappedBy = "rack", cascade =CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Item> items ;
 	

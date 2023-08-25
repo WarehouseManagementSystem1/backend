@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.SigninRequest;
+import com.app.entities.User;
 import com.app.dto.ApiResponse;
 import com.app.services.UserService;
 
