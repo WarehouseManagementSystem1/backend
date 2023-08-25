@@ -137,6 +137,29 @@ public class Item extends BaseEntity {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Warehouse_Id")
 	private Warehouse warehouse;
+
+	public Item(Long id, int units, float unitLength, float unitWidth, float unitHeight, Block block, Level level,
+			Rack rack, Area area, Warehouse warehouse) {
+		super(id);
+		this.units = units;
+		this.unitLength = unitLength;
+		this.unitWidth = unitWidth;
+		this.unitHeight = unitHeight;
+		this.block = block;
+		this.level = level;
+		this.rack = rack;
+		this.area = area;
+		this.warehouse = warehouse;
+	}
+
+	public Item(Long id) {
+		super(id);
+		
+	}
+
+	public Item() {
+		super();
+	}
 	
 	
 

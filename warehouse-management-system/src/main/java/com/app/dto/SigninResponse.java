@@ -12,4 +12,5 @@ public class SigninResponse {
 private Long userId;
 private String name;
 private UserType userType;
+private Long warehouseId;
 }

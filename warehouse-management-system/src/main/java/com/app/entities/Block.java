@@ -66,4 +66,32 @@ public class Block extends BaseEntity {
 	//mapping between block and ITEM
 	@OneToMany(mappedBy = "block", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Item> items = new ArrayList<Item>();
+
+
+	public Block(Long id, String blockNumber, float blockLength, float blockWidth, OccupiedLevel occupiedStatus,
+			Level level, Rack rack, Area area, Warehouse warehouse, List<Item> items) {
+		super(id);
+		this.blockNumber = blockNumber;
+		this.blockLength = blockLength;
+		this.blockWidth = blockWidth;
+		this.occupiedStatus = occupiedStatus;
+		this.level = level;
+		this.rack = rack;
+		this.area = area;
+		this.warehouse = warehouse;
+		this.items = items;
+	}
+
+
+	public Block(Long id) {
+		super(id);
+		
+	}
+
+
+	public Block() {
+		super();
+	}
+	
+	
 }

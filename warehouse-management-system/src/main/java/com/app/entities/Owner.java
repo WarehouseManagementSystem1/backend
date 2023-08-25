@@ -44,6 +44,27 @@ public class Owner extends BaseEntity {
 	//mapping for owner and USER
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER )
 	private List<User> user;
+
+
+	public Owner(Long id ) {
+		super(id);
+		
+	}
+
+
+	public Owner(String name, String email, int phoneNumber, List<Warehouse> warehouse, List<User> user) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.warehouse = warehouse;
+		this.user = user;
+	}
+
+
+	public Owner() {
+		super();
+	}
 	
 
 }

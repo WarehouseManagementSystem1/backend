@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.AddUserDto;
+import com.app.dto.ApiResponse;
 import com.app.dto.SigninRequest;
 import com.app.entities.User;
-import com.app.dto.ApiResponse;
 import com.app.services.UserService;
 
 import jakarta.validation.Valid;
@@ -33,4 +34,14 @@ public class UserController {
 		
 		
 	}
+	@PostMapping("/adduser")
+	 public ResponseEntity<String> createUser(@RequestBody AddUserDto user) {
+			System.out.println(user);
+	        User createdUser = userService.createUser(user);
+	        if (createdUser != null) {
+	            return new ResponseEntity<>("User created successfully", HttpStatus.CREATED);
+	        }
+	        return new ResponseEntity<>("Failed to create user", HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	
 }
