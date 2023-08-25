@@ -1,7 +1,12 @@
 package com.app.entities;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,8 +35,15 @@ public class Owner extends BaseEntity {
 	@Column(name = "Contact_Number")
 	private int phoneNumber;
 	
-	//Mapping has to be done here
-	@Column(name = "Warehouse_Id")
-	private int wareHouseID;
+
+	//mapping for Owner and LIST
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER )
+	private List<Warehouse> warehouse;
+	
+	
+	//mapping for owner and USER
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER )
+	private List<User> user;
+	
 
 }

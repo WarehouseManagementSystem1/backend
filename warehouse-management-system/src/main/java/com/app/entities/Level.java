@@ -33,14 +33,19 @@ public class Level extends BaseEntity{
 	@Column
 	private float levelHeight;
 	
+	
+	//mapping for level and RACK
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Rack_Id")
 	private Rack rack;
 	
 	
+	//mapping for level and BLOCK
 	@OneToMany(mappedBy = "level", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Block> levels ;
 	
+	
+	//mapping for level and ITEM
 	@OneToMany(mappedBy = "level", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Item> items ;
 

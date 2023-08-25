@@ -3,7 +3,9 @@ package com.app.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,8 +24,6 @@ import lombok.ToString;
 
 public class User extends BaseEntity  {
 	
-	
-	
 	@Column(name = "User_Name", length = 30)
 	private String name;
 	
@@ -41,6 +41,15 @@ public class User extends BaseEntity  {
 	private String password;
 	
 	
+	//mapping for user to owner
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ownerId")
+	private Owner owner;
 	
+	
+	//mapping for user and warehouse
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "warehouseId")
+	private Warehouse warehouse;
 
 }
