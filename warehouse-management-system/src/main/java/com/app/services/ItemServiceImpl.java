@@ -67,7 +67,7 @@ public class ItemServiceImpl implements ItemService {
         }
 
        
-        item.setStatus(itemDto.getStatus());
+        
  
 
         return item;
@@ -76,7 +76,7 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public List<ItemDto> getAllItems(Long warehouseId) {
-		ArrayList<Item> items= (ArrayList<Item>) itemRepository.findByWarehouseId(warehouseId);
+		List<Item> items= (List<Item>) itemRepository.findByWarehouseId(warehouseId);
 		return mapItemsToItemDtos(items);
 		
 	}
@@ -105,7 +105,7 @@ public class ItemServiceImpl implements ItemService {
             responseItem.setBlockId(item.getBlock().getId());
         }
         
-        responseItem.setStatus(item.getStatus().toString());
+        
         
         responseItem.setUnits(item.getUnits());
 

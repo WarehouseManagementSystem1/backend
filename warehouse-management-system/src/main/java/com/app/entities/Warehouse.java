@@ -1,11 +1,11 @@
 package com.app.entities;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -34,14 +34,14 @@ public class Warehouse extends BaseEntity {
 	//----------------------------------ye krna hai re bhai
 	//private Owner ownerId;
 	
-	@OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Area> areas = new ArrayList<Area>();
+	@OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER )
+	private List<Area> areas;
 	
-	@OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Block> blocks = new ArrayList<Block>();
+	@OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<Block> blocks ;
 	
-	@OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true)
-	private ArrayList<Item> items = new ArrayList<Item>();
+	@OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<Item> items ;
  	
 
 }

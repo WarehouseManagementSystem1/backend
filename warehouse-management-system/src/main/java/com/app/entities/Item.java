@@ -3,6 +3,7 @@ package com.app.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -61,22 +62,6 @@ public class Item extends BaseEntity {
 		this.unitHeight = unitHeight;
 	}
 
-	public Stacking getStackingAllowed() {
-		return stackingAllowed;
-	}
-
-	public void setStackingAllowed(Stacking stackingAllowed) {
-		this.stackingAllowed = stackingAllowed;
-	}
-
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = Status.valueOf(status);
-	}
-
 	public Block getBlock() {
 		return block;
 	}
@@ -123,31 +108,27 @@ public class Item extends BaseEntity {
 	@Column
 	private float unitHeight;
 	
-	@Column
-	@Enumerated
-	private Stacking stackingAllowed;
 	
-	@Column
-	@Enumerated
-	private Status status;
 	
-	@ManyToOne
+	
+	
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Block_Id")
 	private Block block;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Level_Id")
 	private Level level;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Rack_Id")
 	private Rack rack;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Area_Id")
 	private Area area;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Warehouse_Id")
 	private Warehouse warehouse;
 	
