@@ -58,6 +58,30 @@ public class Warehouse extends BaseEntity {
 	//mapping for USER and warehouse
 	@OneToMany( mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER )
 	private List<User> user;
+
+
+	public Warehouse(Long id, String name, String address, Owner owner, List<Area> areas, List<Block> blocks,
+			List<Item> items, List<User> user) {
+		super(id);
+		this.name = name;
+		this.address = address;
+		this.owner = owner;
+		this.areas = areas;
+		this.blocks = blocks;
+		this.items = items;
+		this.user = user;
+	}
+
+
+	public Warehouse(Long id) {
+		super(id);
+		
+	}
+
+
+	public Warehouse() {
+		super();
+	}
  	
 
 }

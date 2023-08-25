@@ -49,4 +49,26 @@ public class Level extends BaseEntity{
 	@OneToMany(mappedBy = "level", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Item> items ;
 
+
+	public Level(Long id, String levelNumber, float levelHeight, Rack rack, List<Block> levels, List<Item> items) {
+		super(id);
+		this.levelNumber = levelNumber;
+		this.levelHeight = levelHeight;
+		this.rack = rack;
+		this.levels = levels;
+		this.items = items;
+	}
+
+
+	public Level(Long id) {
+		super(id);
+		
+	}
+
+
+	public Level() {
+		super();
+	}
+	
+
 }
