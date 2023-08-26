@@ -20,20 +20,6 @@ public class ItemDto {
 		this.id = id;
 	}
 
-
-	public int getUnits() {
-		return units;
-	}
-
-
-	public void setUnits(int units) {
-		this.units = units;
-	}
-
-
-	
-
-
 	public Long getBlockId() {
 		return blockId;
 	}
@@ -85,10 +71,6 @@ public class ItemDto {
 
 
 	private Long id;
-	
-	private int units;
-	
-	
 	
 
 	private Long blockId;

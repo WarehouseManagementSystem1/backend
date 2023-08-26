@@ -2,7 +2,6 @@ package com.app.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -28,7 +27,7 @@ public class Item extends BaseEntity {
 	private int units;
 	
 	@Column
-	private float unitLength;
+	private float itemLength;
 	
 	@Column
 	private String name;
@@ -51,28 +50,28 @@ public class Item extends BaseEntity {
 		this.units = units;
 	}
 
-	public float getUnitLength() {
-		return unitLength;
+	public float getItemLength() {
+		return itemLength;
 	}
 
-	public void setUnitLength(float unitLength) {
-		this.unitLength = unitLength;
+	public void setItemLength(float itemLength) {
+		this.itemLength = itemLength;
 	}
 
-	public float getUnitWidth() {
-		return unitWidth;
+	public float getItemWidth() {
+		return itemWidth;
 	}
 
-	public void setUnitWidth(float unitWidth) {
-		this.unitWidth = unitWidth;
+	public void setItemWidth(float unitWidth) {
+		this.itemWidth = unitWidth;
 	}
 
-	public float getUnitHeight() {
-		return unitHeight;
+	public float getItemHeight() {
+		return itemHeight;
 	}
 
-	public void setUnitHeight(float unitHeight) {
-		this.unitHeight = unitHeight;
+	public void setItemHeight(float itemHeight) {
+		this.itemHeight = itemHeight;
 	}
 
 	public Block getBlock() {
@@ -116,10 +115,10 @@ public class Item extends BaseEntity {
 	}
 
 	@Column
-	private float unitWidth;
+	private float itemWidth;
 	
 	@Column
-	private float unitHeight;
+	private float itemHeight;
 	
 	
 	//mapping for item and BLOCK 
@@ -153,14 +152,16 @@ public class Item extends BaseEntity {
 
 	
 
-	public Item(Long id, int units, float unitLength, String name, float unitWidth, float unitHeight, Block block,
+	
+
+	public Item(Long id, int units, float itemLength, String name, float itemWidth, float itemHeight, Block block,
 			Level level, Rack rack, Area area, Warehouse warehouse) {
 		super(id);
 		this.units = units;
-		this.unitLength = unitLength;
+		this.itemLength = itemLength;
 		this.name = name;
-		this.unitWidth = unitWidth;
-		this.unitHeight = unitHeight;
+		this.itemWidth = itemWidth;
+		this.itemHeight = itemHeight;
 		this.block = block;
 		this.level = level;
 		this.rack = rack;

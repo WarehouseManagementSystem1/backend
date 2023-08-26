@@ -29,7 +29,7 @@ import lombok.ToString;
 public class Block extends BaseEntity {
 	
 	@Column
-	private String blockNumber;
+	private int blockNumber;
 	
 	@Column
 	private float blockLength;
@@ -68,7 +68,10 @@ public class Block extends BaseEntity {
 	private List<Item> items = new ArrayList<Item>();
 
 
-	public Block(Long id, String blockNumber, float blockLength, float blockWidth, OccupiedLevel occupiedStatus,
+	
+
+
+	public Block(Long id, int blockNumber, float blockLength, float blockWidth, OccupiedLevel occupiedStatus,
 			Level level, Rack rack, Area area, Warehouse warehouse, List<Item> items) {
 		super(id);
 		this.blockNumber = blockNumber;
