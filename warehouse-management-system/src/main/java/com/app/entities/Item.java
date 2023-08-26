@@ -30,6 +30,19 @@ public class Item extends BaseEntity {
 	@Column
 	private float unitLength;
 	
+	@Column
+	private String name;
+	
+	
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public int getUnits() {
 		return units;
 	}
@@ -138,11 +151,14 @@ public class Item extends BaseEntity {
 	@JoinColumn(name = "Warehouse_Id")
 	private Warehouse warehouse;
 
-	public Item(Long id, int units, float unitLength, float unitWidth, float unitHeight, Block block, Level level,
-			Rack rack, Area area, Warehouse warehouse) {
+	
+
+	public Item(Long id, int units, float unitLength, String name, float unitWidth, float unitHeight, Block block,
+			Level level, Rack rack, Area area, Warehouse warehouse) {
 		super(id);
 		this.units = units;
 		this.unitLength = unitLength;
+		this.name = name;
 		this.unitWidth = unitWidth;
 		this.unitHeight = unitHeight;
 		this.block = block;
