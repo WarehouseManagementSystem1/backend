@@ -26,8 +26,11 @@ import lombok.ToString;
 
 public class Owner extends BaseEntity {
 	
-	@Column(name = "User_Name", length = 30)
-	private String name;
+	@Column(name = "First_Name", length = 30)
+	private String firstName;
+	
+	@Column(name = "Last_Name", length = 30)
+	private String LastName;
 	
 	@Column(name = "Email", length = 30)
 	private String email;
@@ -52,15 +55,18 @@ public class Owner extends BaseEntity {
 	}
 
 
-	public Owner(String name, String email, int phoneNumber, List<Warehouse> warehouse, List<User> user) {
-		super();
-		this.name = name;
+	public Owner(Long id, String firstName, String lastName, String email, int phoneNumber, List<Warehouse> warehouse,
+			List<User> user) {
+		super(id);
+		this.firstName = firstName;
+		LastName = lastName;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.warehouse = warehouse;
 		this.user = user;
 	}
-
+	
+	
 
 	public Owner() {
 		super();

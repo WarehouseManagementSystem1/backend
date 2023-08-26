@@ -24,8 +24,11 @@ import lombok.ToString;
 
 public class User extends BaseEntity  {
 	
-	@Column(name = "User_Name", length = 30)
-	private String name;
+	@Column(name = "First_Name", length = 30)
+	private String firstName;
+	
+	@Column(name = "Last_Name", length = 30)
+	private String lastName;
 	
 	@Column(name = "Email", length = 30)
 	private String email;
@@ -53,14 +56,7 @@ public class User extends BaseEntity  {
 	private Warehouse warehouse;
 
 
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 
 	public String getEmail() {
@@ -125,18 +121,38 @@ public class User extends BaseEntity  {
 	}
 
 
-	@Override
-	public String toString() {
-		return "User [name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", user=" + user
-				+ ", password=" + password + ", owner=" + owner + ", warehouse=" + warehouse + ", getId()=" + getId()
-				+ "]";
+	public String getFirstName() {
+		return firstName;
 	}
 
 
-	public User(Long id, String name, String email, String phoneNumber, UserType user, String password, Owner owner,
-			Warehouse warehouse) {
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	@Override
+	public String toString() {
+		return "User [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber="
+				+ phoneNumber + ", user=" + user + ", password=" + password + ", owner=" + owner + ", warehouse="
+				+ warehouse + "]";
+	}
+
+
+	public User(Long id, String firstName, String lastName, String email, String phoneNumber, UserType user,
+			String password, Owner owner, Warehouse warehouse) {
 		super(id);
-		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.user = user;
@@ -150,7 +166,6 @@ public class User extends BaseEntity  {
 		super(id);
 		
 	}
-
 
 	public User() {
 		super();
