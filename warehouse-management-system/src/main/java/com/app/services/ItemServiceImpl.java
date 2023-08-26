@@ -1,6 +1,5 @@
 package com.app.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dto.ItemDto;
+import com.app.dto.ItemIdResponse;
 import com.app.entities.Area;
 import com.app.entities.Block;
 import com.app.entities.Item;
@@ -117,6 +117,15 @@ public class ItemServiceImpl implements ItemService {
             .map(this::mapItemToItemDto)
             .collect(Collectors.toList());
     }
+
+	@Override
+	public List<ItemIdResponse> getAllItemIdAndName(Long warehouseId) {
+		List<ItemIdResponse> itemList = itemRepository.findItemIdsAndNamesByWarehouseId(warehouseId);
+		System.out.println(itemList);
+		return itemList;
+	}
+
+	
 }
 
 
