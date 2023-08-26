@@ -20,8 +20,6 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @ToString
 
 public class Owner extends BaseEntity {

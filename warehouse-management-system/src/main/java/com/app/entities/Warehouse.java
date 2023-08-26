@@ -22,7 +22,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
 
 public class Warehouse extends BaseEntity {

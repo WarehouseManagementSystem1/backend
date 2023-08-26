@@ -19,7 +19,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
 
 public class Item extends BaseEntity {
