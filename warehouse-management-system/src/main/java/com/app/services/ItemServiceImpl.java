@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dto.ItemDto;
 import com.app.dto.ItemIdResponse;
 import com.app.entities.Area;
@@ -34,7 +35,6 @@ public class ItemServiceImpl implements ItemService {
 		
         Item item = new Item();
         item.setId(itemDto.getId());
-        item.setUnits(itemDto.getUnits());
         // Assuming you have the appropriate constructors or setter methods for references
         if (itemDto.getWarehouseId() != null) {
             Warehouse warehouse = new Warehouse();
@@ -105,9 +105,6 @@ public class ItemServiceImpl implements ItemService {
             responseItem.setBlockId(item.getBlock().getId());
         }
         
-        
-        
-        responseItem.setUnits(item.getUnits());
 
         return responseItem;
     }
@@ -125,7 +122,35 @@ public class ItemServiceImpl implements ItemService {
 		return itemList;
 	}
 
+	@Override
+	public float findItemHeightById(Long itemId) {
+	    Item item = itemRepository.findById(itemId).orElseThrow(() -> new ResourceNotFoundException("invalid item id "));
+	   
+	        return item.getItemHeight();
+	 
+	}
+
+	@Override
+	public float findItemLengthById(Long itemId) {
+		 Item item = itemRepository.findById(itemId).orElseThrow(() -> new ResourceNotFoundException("invalid item id "));
+		   
+	        return item.getItemLength();
+	}
+
+	@Override
+	public float findItemWitdthById(Long itemId) {
+		
+		 Item item = itemRepository.findById(itemId).orElseThrow(() -> new ResourceNotFoundException("invalid item id "));
+		   
+	        return item.getItemWidth();
+	}
 	
+
+
+
+
+
+
 }
 
 
