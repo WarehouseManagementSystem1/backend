@@ -65,6 +65,13 @@ public class Area extends BaseEntity {
 
 
 
+	public Area(Long id) {
+		super(id);
+		
+	}
+
+
+
 	public String getAreaName() {
 		return areaName;
 	}

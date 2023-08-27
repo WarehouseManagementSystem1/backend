@@ -35,11 +35,14 @@ public class UserController {
 		
 	}
 	@PostMapping("/adduser")
-	 public ResponseEntity<String> createUser(@RequestBody AddUserDto user) {
-			System.out.println(user);
-	        User createdUser = userService.createUser(user);
+	 public ResponseEntity<String> createUser(@RequestBody AddUserDto newUser) {
+			System.out.println("in side controller");
+			System.out.println(newUser.getFirstname());
+			System.out.println(newUser.getLastname());
+			System.out.println(newUser);
+	        User createdUser = userService.createUser(newUser);
 	        if (createdUser != null) {
-	            return new ResponseEntity<>("User created successfully", HttpStatus.CREATED);
+	            return new ResponseEntity<>("User created successfully", HttpStatus.OK);
 	        }
 	        return new ResponseEntity<>("Failed to create user", HttpStatus.INTERNAL_SERVER_ERROR);
 	    }

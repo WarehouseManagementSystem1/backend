@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dto.AddUserDto;
+import com.app.dto.AddWarehouseResponse;
 import com.app.dto.SigninRequest;
 import com.app.dto.SigninResponse;
 import com.app.entities.Owner;
@@ -56,12 +57,16 @@ public class UserServiceImpl implements UserService {
 	private User convertToEntity(AddUserDto userDto) {
         User user = modelMapper.map(userDto, User.class);
         
-        user.setUser(UserType.valueOf(userDto.getUser().toUpperCase()));
+        user.setFirstName(userDto.getFirstname());
+        user.setLastName(userDto.getLastname());
+        user.setUser(UserType.valueOf(userDto.getUserType().toUpperCase()));
         if (userDto.getOwnerId() != null) {
-            user.setOwner(new Owner(userDto.getOwnerId())); 
+        	Owner owner = ownerRepository.findById(userDto.getOwnerId()).orElseThrow(()->new ResourceNotFoundException("invalid owner Id "));
+            user.setOwner(owner); 
         }
         if (userDto.getWarehouseId() != null) {
-            user.setWarehouse(new Warehouse(userDto.getWarehouseId())); 
+        	Warehouse warehouse = warehouseRepository.findById(userDto.getWarehouseId()).orElseThrow(()->new ResourceNotFoundException("invalid warehouse id !!!"));
+            user.setWarehouse(warehouse); 
         }
         
         return user;
