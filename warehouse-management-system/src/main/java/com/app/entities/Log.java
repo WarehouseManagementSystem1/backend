@@ -23,42 +23,44 @@ public class Log extends BaseEntity {
 	private String transactionType;
 	
 	@Column
-	private int warehouseId;
+	private Long warehouseId;
 
 	@Column
 	private String itemName;
 	
 	@Column
-	private int itemId;
+	private Long itemId;
 	
 	@Column
-	private int initialAreaId;
+	private Long initialAreaId;
 	
 	@Column
-	private int initialRackId;
+	private Long initialRackId;
 	
 	@Column
-	private int initialLevelId;
+	private Long initialLevelId;
 	
 	@Column
-	private int initialBlockId;
+	private Long initialBlockId;
 	
 	@Column
-	private int finalAreaId;
+	private Long finalAreaId;
 	
 	@Column
-	private int finalRackId;
+	private Long finalRackId;
 	
 	@Column
-	private int finalLevelId;
+	private Long finalLevelId;
 	
 	@Column
-	private int finalBlockId;
+	private Long finalBlockId;
 
-	public Log(Long id, String transactionType, int warehouseId, String itemName, int itemId, int initialAreaId,
-			int initialRackId, int initialLevelId, int initialBlockId, int finalAreaId, int finalRackId,
-			int finalLevelId, int finalBlockId) {
-		super(id);
+	
+
+	public Log(String transactionType, Long warehouseId, String itemName, Long itemId, Long initialAreaId,
+			Long initialRackId, Long initialLevelId, Long initialBlockId, Long finalAreaId, Long finalRackId,
+			Long finalLevelId, Long finalBlockId) {
+		super();
 		this.transactionType = transactionType;
 		this.warehouseId = warehouseId;
 		this.itemName = itemName;
@@ -73,10 +75,156 @@ public class Log extends BaseEntity {
 		this.finalBlockId = finalBlockId;
 	}
 
+
+
 	public Log(Long id) {
 		super(id);
 		
 	}
+
+
+
+	public String getTransactionType() {
+		return transactionType;
+	}
+
+	public void setTransactionType(String transactionType) {
+		this.transactionType = transactionType;
+	}
+
+
+
+	public Long getWarehouseId() {
+		return warehouseId;
+	}
+
+
+
+	public void setWarehouseId(Long warehouseId) {
+		this.warehouseId = warehouseId;
+	}
+
+
+
+	public String getItemName() {
+		return itemName;
+	}
+
+
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+
+
+	public Long getItemId() {
+		return itemId;
+	}
+
+
+
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
+	}
+
+
+
+	public Long getInitialAreaId() {
+		return initialAreaId;
+	}
+
+
+
+	public void setInitialAreaId(Long initialAreaId) {
+		this.initialAreaId = initialAreaId;
+	}
+
+
+
+	public Long getInitialRackId() {
+		return initialRackId;
+	}
+
+
+
+	public void setInitialRackId(Long initialRackId) {
+		this.initialRackId = initialRackId;
+	}
+
+
+
+	public Long getInitialLevelId() {
+		return initialLevelId;
+	}
+
+
+
+	public void setInitialLevelId(Long initialLevelId) {
+		this.initialLevelId = initialLevelId;
+	}
+
+
+
+	public Long getInitialBlockId() {
+		return initialBlockId;
+	}
+
+
+
+	public void setInitialBlockId(Long initialBlockId) {
+		this.initialBlockId = initialBlockId;
+	}
+
+
+
+	public Long getFinalAreaId() {
+		return finalAreaId;
+	}
+
+
+
+	public void setFinalAreaId(Long finalAreaId) {
+		this.finalAreaId = finalAreaId;
+	}
+
+
+
+	public Long getFinalRackId() {
+		return finalRackId;
+	}
+
+
+
+	public void setFinalRackId(Long finalRackId) {
+		this.finalRackId = finalRackId;
+	}
+
+
+
+	public Long getFinalLevelId() {
+		return finalLevelId;
+	}
+
+
+
+	public void setFinalLevelId(Long finalLevelId) {
+		this.finalLevelId = finalLevelId;
+	}
+
+
+
+	public Long getFinalBlockId() {
+		return finalBlockId;
+	}
+
+
+
+	public void setFinalBlockId(Long finalBlockId) {
+		this.finalBlockId = finalBlockId;
+	}
+
+	
 
 	
 }

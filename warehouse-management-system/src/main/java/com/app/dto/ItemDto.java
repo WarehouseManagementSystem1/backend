@@ -21,69 +21,69 @@ public class ItemDto {
 	}
 
 	public Long getBlockId() {
-		return blockId;
+		return blockid;
 	}
 
 
 	public void setBlockId(Long blockId) {
-		this.blockId = blockId;
+		this.blockid = blockId;
 	}
 
 
 	public Long getLevelId() {
-		return levelId;
+		return levelid;
 	}
 
 
 	public void setLevelId(Long levelId) {
-		this.levelId = levelId;
+		this.levelid = levelId;
 	}
 
 
 	public Long getRackId() {
-		return rackId;
+		return rackid;
 	}
 
 
 	public void setRackId(Long rackId) {
-		this.rackId = rackId;
+		this.rackid = rackId;
 	}
 
 
 	public Long getAreaId() {
-		return areaId;
+		return areaid;
 	}
 
 
 	public void setAreaId(Long areaId) {
-		this.areaId = areaId;
+		this.areaid = areaId;
 	}
 
 
 	public Long getWarehouseId() {
-		return warehouseId;
+		return warehouseid;
 	}
 
 
 	public void setWarehouseId(Long warehouseId) {
-		this.warehouseId = warehouseId;
+		this.warehouseid = warehouseId;
 	}
 
 
 	private Long id;
 	
 
-	private Long blockId;
+	private Long blockid;
 	
 
-	private Long levelId;
+	private Long levelid;
 	
 	
-	private Long rackId;
+	private Long rackid;
 	
 	
-	private Long areaId;
+	private Long areaid;
 	
 	
-	private Long warehouseId;
+	private Long warehouseid;
 }
