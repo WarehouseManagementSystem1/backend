@@ -36,10 +36,10 @@ public class UserController {
 	}
 	@PostMapping("/adduser")
 	 public ResponseEntity<String> createUser(@RequestBody AddUserDto newUser) {
-			System.out.println("in side controller");
-			System.out.println(newUser.getFirstname());
-			System.out.println(newUser.getLastname());
-			System.out.println(newUser);
+//			System.out.println("in side controller");
+//			System.out.println(newUser.getFirstname());
+//			System.out.println(newUser.getLastname());
+//			System.out.println(newUser);
 	        User createdUser = userService.createUser(newUser);
 	        if (createdUser != null) {
 	            return new ResponseEntity<>("User created successfully", HttpStatus.OK);

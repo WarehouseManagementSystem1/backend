@@ -39,10 +39,28 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public SigninResponse authenticate(SigninRequest request) {
 		// invoke dao's method
+		
+		 String hashedPassword = hashPassword(request.getPassword());
+		 request.setPassword(hashedPassword);
 		User user = userRepo.findByEmailAndPassword(request.getEmail(), request.getPassword())
 				.orElseThrow(() -> new ResourceNotFoundException("Bad Credentials , Invalid Login!!!!!!!!!!!!!"));
-		return modelMapper.map(user, SigninResponse.class);
+		SigninResponse response = convertToSigninResponse(user);
+		return response;
 	}
+	
+	
+	private SigninResponse convertToSigninResponse(User user) {
+		SigninResponse response = new SigninResponse();
+		response.setFirstname(user.getFirstName());
+		response.setLastname(user.getLastName());
+		response.setOwnerId(user.getOwner().getId());
+		response.setUserId(user.getId());
+		response.setUserType(user.getUser());
+		response.setWarehouseId(user.getWarehouse().getId());
+		return response;
+	}
+
+
 	@Override
 	public User createUser(AddUserDto user) {
         String hashedPassword = hashPassword(user.getPassword());
