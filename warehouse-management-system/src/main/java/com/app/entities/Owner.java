@@ -36,7 +36,7 @@ public class Owner extends BaseEntity {
 	private String email;
 	
 	@Column(name = "Contact_Number")
-	private int phoneNumber;
+	private String phoneNumber;
 	
 
 	//mapping for Owner and LIST
@@ -55,7 +55,7 @@ public class Owner extends BaseEntity {
 	}
 
 
-	public Owner(Long id, String firstName, String lastName, String email, int phoneNumber, List<Warehouse> warehouse,
+	public Owner(Long id, String firstName, String lastName, String email, String phoneNumber, List<Warehouse> warehouse,
 			List<User> user) {
 		super(id);
 		this.firstName = firstName;
@@ -103,12 +103,12 @@ public class Owner extends BaseEntity {
 	}
 
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
