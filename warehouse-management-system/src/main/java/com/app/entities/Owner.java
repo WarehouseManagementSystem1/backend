@@ -71,6 +71,68 @@ public class Owner extends BaseEntity {
 	public Owner() {
 		super();
 	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return LastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		LastName = lastName;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
+
+
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
+	public List<Warehouse> getWarehouse() {
+		return warehouse;
+	}
+
+
+	public void setWarehouse(List<Warehouse> warehouse) {
+		this.warehouse = warehouse;
+	}
+
+
+	public List<User> getUser() {
+		return user;
+	}
+
+
+	public void setUser(List<User> user) {
+		this.user = user;
+	}
+	
+	
 	
 
 }
