@@ -15,6 +15,7 @@ import com.app.entities.Block;
 import com.app.entities.Item;
 import com.app.entities.Level;
 import com.app.entities.Log;
+import com.app.entities.OccupiedLevel;
 import com.app.entities.Rack;
 import com.app.repository.AreaRepository;
 import com.app.repository.BlockRepository;
@@ -59,19 +60,27 @@ public class ItemServiceImpl implements ItemService {
 	public Item updateDetails(ItemDto detachedItem) {
 		Item item = itemRepository.findById(detachedItem.getId()).orElseThrow(()->new ResourceNotFoundException("Not a valid Id  "));
 		
-		logRepository.save(new Log("Audit", detachedItem.getWarehouseId(), item.getName(), detachedItem.getId(), item.getArea().getId(), item.getRack().getId(), item.getLevel().getId(), item.getBlock().getId(), detachedItem.getAreaId(), detachedItem.getRackId(), detachedItem.getLevelId(), detachedItem.getBlockId()));
+		//Block block = blockRepository.findById(item.getBlock().getId()).orElseThrow(()->new ResourceNotFoundException("Not a valid Id  "));
 		
-		Area newArea = areaRepository.findById(detachedItem.getAreaId()).orElse(null);
+		Block block = item.getBlock();
+		System.out.println(block);
+		block.setOccupiedStatus(OccupiedLevel.EMPTY);
+		
+		logRepository.save(new Log("Audit", detachedItem.getWarehouseid(), item.getName(), detachedItem.getId(), item.getArea().getId(), item.getRack().getId(), item.getLevel().getId(), item.getBlock().getId(), detachedItem.getAreaid(), detachedItem.getRackid(), detachedItem.getLevelid(), detachedItem.getBlockid()));
+		
+		Area newArea = areaRepository.findById(detachedItem.getAreaid()).orElse(null);
         item.setArea(newArea);
         
-        Rack newRack = rackRepository.findById(detachedItem.getRackId()).orElse(null);
+        Rack newRack = rackRepository.findById(detachedItem.getRackid()).orElse(null);
         item.setRack(newRack);
         
-        Level newLevel = levelRepository.findById(detachedItem.getLevelId()).orElse(null);
+        Level newLevel = levelRepository.findById(detachedItem.getLevelid()).orElse(null);
         item.setLevel(newLevel);
         
-        Block newBlock = blockRepository.findById(detachedItem.getBlockId()).orElse(null);
+        Block newBlock = blockRepository.findById(detachedItem.getBlockid()).orElse(null);
         item.setBlock(newBlock);
+        
+        newBlock.setOccupiedStatus(OccupiedLevel.OCCUPIED);
         
 		return item;
 	}
@@ -82,23 +91,23 @@ public class ItemServiceImpl implements ItemService {
         responseItem.setId(item.getId());
 
         if (item.getWarehouse() != null) {
-            responseItem.setWarehouseId(item.getWarehouse().getId());
+            responseItem.setWarehouseid(item.getWarehouse().getId());
         }
         
         if (item.getArea() != null) {
-            responseItem.setAreaId(item.getArea().getId());
+            responseItem.setAreaid(item.getArea().getId());
         }
         
         if (item.getRack() != null) {
-            responseItem.setRackId(item.getRack().getId());
+            responseItem.setRackid(item.getRack().getId());
         }
         
         if (item.getLevel() != null) {
-            responseItem.setLevelId(item.getLevel().getId());
+            responseItem.setLevelid(item.getLevel().getId());
         }
         
         if (item.getBlock() != null) {
-            responseItem.setBlockId(item.getBlock().getId());
+            responseItem.setBlockid(item.getBlock().getId());
         }
         
 
@@ -149,11 +158,6 @@ public class ItemServiceImpl implements ItemService {
 		   
 	        return item.getItemWidth();
 	}
-	
-
-
-
-
 
 
 }
