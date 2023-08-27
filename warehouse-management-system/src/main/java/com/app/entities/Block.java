@@ -90,6 +90,97 @@ public class Block extends BaseEntity {
 		super(id);
 		
 	}
+	
+	
+
+	public int getBlockNumber() {
+		return blockNumber;
+	}
+
+
+	public void setBlockNumber(int blockNumber) {
+		this.blockNumber = blockNumber;
+	}
+
+
+	public float getBlockLength() {
+		return blockLength;
+	}
+
+
+	public void setBlockLength(float blockLength) {
+		this.blockLength = blockLength;
+	}
+
+
+	public float getBlockWidth() {
+		return blockWidth;
+	}
+
+
+	public void setBlockWidth(float blockWidth) {
+		this.blockWidth = blockWidth;
+	}
+
+
+	public OccupiedLevel getOccupiedStatus() {
+		return occupiedStatus;
+	}
+
+
+	public void setOccupiedStatus(OccupiedLevel occupiedStatus) {
+		this.occupiedStatus = occupiedStatus;
+	}
+
+
+	public Level getLevel() {
+		return level;
+	}
+
+
+	public void setLevel(Level level) {
+		this.level = level;
+	}
+
+
+	public Rack getRack() {
+		return rack;
+	}
+
+
+	public void setRack(Rack rack) {
+		this.rack = rack;
+	}
+
+
+	public Area getArea() {
+		return area;
+	}
+
+
+	public void setArea(Area area) {
+		this.area = area;
+	}
+
+
+	public Warehouse getWarehouse() {
+		return warehouse;
+	}
+
+
+	public void setWarehouse(Warehouse warehouse) {
+		this.warehouse = warehouse;
+	}
+
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
 
 
 	public Block() {
