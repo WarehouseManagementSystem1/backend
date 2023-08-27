@@ -30,7 +30,6 @@ public class ItemController {
 
 	@PostMapping("/transfer")
 	public ItemDto itemTransfer(@RequestBody ItemDto detachedItem){
-		
 		return itemService.transfer(detachedItem);
 	}
 
