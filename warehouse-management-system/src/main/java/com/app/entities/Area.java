@@ -63,10 +63,87 @@ public class Area extends BaseEntity {
 	}
 
 
-	public Area(Long id) {
-		super(id);
-		
+
+
+
+	public String getAreaName() {
+		return areaName;
 	}
+
+
+
+
+
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
+	}
+
+
+
+
+
+	public Warehouse getWarehouse() {
+		return warehouse;
+	}
+
+
+
+
+
+	public void setWarehouse(Warehouse warehouse) {
+		this.warehouse = warehouse;
+	}
+
+
+
+
+
+	public List<Rack> getRacks() {
+		return racks;
+	}
+
+
+
+
+
+	public void setRacks(List<Rack> racks) {
+		this.racks = racks;
+	}
+
+
+
+
+
+	public List<Block> getBlocks() {
+		return blocks;
+	}
+
+
+
+
+
+	public void setBlocks(List<Block> blocks) {
+		this.blocks = blocks;
+	}
+
+
+
+
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+
+
+
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
+
+
 
 
 	public Area() {

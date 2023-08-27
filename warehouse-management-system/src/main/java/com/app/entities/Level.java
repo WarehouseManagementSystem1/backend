@@ -27,7 +27,7 @@ import lombok.ToString;
 public class Level extends BaseEntity{ 
 	
 	@Column
-	private String levelNumber;
+	private int levelNumber;
 	
 	@Column
 	private float levelHeight;
@@ -49,19 +49,86 @@ public class Level extends BaseEntity{
 	private List<Item> items ;
 
 
-	public Level(Long id, String levelNumber, float levelHeight, Rack rack, List<Block> levels, List<Item> items) {
+	
+
+
+	
+
+
+	public int getLevelNumber() {
+		return levelNumber;
+	}
+
+
+
+	public void setLevelNumber(int levelNumber) {
+		this.levelNumber = levelNumber;
+	}
+
+
+
+	public float getLevelHeight() {
+		return levelHeight;
+	}
+
+
+
+	public void setLevelHeight(float levelHeight) {
+		this.levelHeight = levelHeight;
+	}
+
+
+
+	public Rack getRack() {
+		return rack;
+	}
+
+
+
+	public void setRack(Rack rack) {
+		this.rack = rack;
+	}
+
+
+
+	public List<Block> getLevels() {
+		return levels;
+	}
+
+
+
+	public void setLevels(List<Block> levels) {
+		this.levels = levels;
+	}
+
+
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
+
+
+	public Level(Long id) {
+		super(id);
+		
+	}
+
+	
+
+	public Level(Long id, int levelNumber, float levelHeight, Rack rack, List<Block> levels, List<Item> items) {
 		super(id);
 		this.levelNumber = levelNumber;
 		this.levelHeight = levelHeight;
 		this.rack = rack;
 		this.levels = levels;
 		this.items = items;
-	}
-
-
-	public Level(Long id) {
-		super(id);
-		
 	}
 
 

@@ -9,4 +9,6 @@ import com.app.entities.User;
 public interface UserRepository extends JpaRepository<User,Long> {
 
 	Optional<User> findByEmailAndPassword(String em,String pass);
+	
+	Optional<User> findByOwnerId(Long ownerId);
 }

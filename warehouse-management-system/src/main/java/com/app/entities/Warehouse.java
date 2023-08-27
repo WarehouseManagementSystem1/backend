@@ -72,6 +72,106 @@ public class Warehouse extends BaseEntity {
 	}
 
 
+	
+	
+	public String getName() {
+		return name;
+	}
+
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+
+	public Owner getOwner() {
+		return owner;
+	}
+
+
+
+
+	public void setOwner(Owner owner) {
+		this.owner = owner;
+	}
+
+
+
+
+	public List<Area> getAreas() {
+		return areas;
+	}
+
+
+
+
+	public void setAreas(List<Area> areas) {
+		this.areas = areas;
+	}
+
+
+
+
+	public List<Block> getBlocks() {
+		return blocks;
+	}
+
+
+
+
+	public void setBlocks(List<Block> blocks) {
+		this.blocks = blocks;
+	}
+
+
+
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+
+
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
+
+
+
+	public List<User> getUser() {
+		return user;
+	}
+
+
+
+
+	public void setUser(List<User> user) {
+		this.user = user;
+	}
+
+
+
+
 	public Warehouse(Long id) {
 		super(id);
 		

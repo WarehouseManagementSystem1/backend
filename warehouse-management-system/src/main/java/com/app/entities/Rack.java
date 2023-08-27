@@ -27,7 +27,7 @@ import lombok.ToString;
 public class Rack extends BaseEntity {
 	
 	@Column
-	private String rackNumber;
+	private int rackNumber;
 	
 	
 	//mapping for rack and AREA
@@ -51,7 +51,60 @@ public class Rack extends BaseEntity {
 	private List<Item> items ;
 
 
-	public Rack(Long id, String rackNumber, Area area, List<Level> levels, List<Block> blocks, List<Item> items) {
+	
+
+
+	public int getRackNumber() {
+		return rackNumber;
+	}
+
+
+	public void setRackNumber(int rackNumber) {
+		this.rackNumber = rackNumber;
+	}
+
+
+	public Area getArea() {
+		return area;
+	}
+
+
+	public void setArea(Area area) {
+		this.area = area;
+	}
+
+
+	public List<Level> getLevels() {
+		return levels;
+	}
+
+
+	public void setLevels(List<Level> levels) {
+		this.levels = levels;
+	}
+
+
+	public List<Block> getBlocks() {
+		return blocks;
+	}
+
+
+	public void setBlocks(List<Block> blocks) {
+		this.blocks = blocks;
+	}
+
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
+
+	public Rack(Long id, int rackNumber, Area area, List<Level> levels, List<Block> blocks, List<Item> items) {
 		super(id);
 		this.rackNumber = rackNumber;
 		this.area = area;
