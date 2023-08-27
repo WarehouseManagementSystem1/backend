@@ -186,6 +186,15 @@ public class Block extends BaseEntity {
 	public Block() {
 		super();
 	}
+
+
+	@Override
+	public String toString() {
+		return "Block [blockNumber=" + blockNumber + ", blockLength=" + blockLength + ", blockWidth=" + blockWidth
+				+ ", occupiedStatus=" + occupiedStatus + ", level=" + level + ", rack=" + rack + ", area=" + area
+				+ ", warehouse=" + warehouse + ", items=" + items + "]";
+	}
+	
 	
 	
 }

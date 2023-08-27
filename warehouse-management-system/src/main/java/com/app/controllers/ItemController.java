@@ -29,6 +29,7 @@ public class ItemController {
 
 	@PostMapping("/transfer")
 	public ItemDto itemTransfer(@RequestBody ItemDto detachedItem){
+		System.out.println(detachedItem);
 		return itemService.transfer(detachedItem);
 	}
 
