@@ -1,20 +1,31 @@
 package com.app.dto;
 
-import jakarta.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LogResponse {
-	
+	@JsonProperty("transactionType")
 	private String transactionType;
+	@JsonProperty("warehouseId")
 	private Long warehouseId;
+	@JsonProperty("itemName")
 	private String itemName;
+	@JsonProperty("itemId")
 	private Long itemId;
+	@JsonProperty("initialAreaId")
 	private Long initialAreaId;
+	@JsonProperty("initialRackId")
 	private Long initialRackId;
+	@JsonProperty("initialLevelId")
 	private Long initialLevelId;
+	@JsonProperty("initialBlockId")
 	private Long initialBlockId;
+	@JsonProperty("finalAreaId")
 	private Long finalAreaId;
+	@JsonProperty("finalRackId")
 	private Long finalRackId;
+	@JsonProperty("finalLevelId")
 	private Long finalLevelId;
+	@JsonProperty("finalBlockId")
 	private Long finalBlockId;
 	public String getTransactionType() {
 		return transactionType;

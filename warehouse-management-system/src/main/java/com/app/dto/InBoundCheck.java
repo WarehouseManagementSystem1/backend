@@ -1,11 +1,20 @@
 package com.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class InBoundCheck {
+	@JsonProperty("itemname")
 	private String itemname;
+	@JsonProperty("units")
 	private int units;
+	@JsonProperty("itemheight")
 	private float itemheight;
+	@JsonProperty("itemlength")
 	private float itemlength;
+	@JsonProperty("itemwidth")
 	private float itemwidth;
+	
+	
 	public String getItemname() {
 		return itemname;
 	}

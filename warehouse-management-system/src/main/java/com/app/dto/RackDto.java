@@ -1,8 +1,12 @@
 package com.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class RackDto {
 
+	@JsonProperty("id")
 	private Long id;
+	@JsonProperty("number")
 	private int number;
 	public Long getId() {
 		return id;

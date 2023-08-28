@@ -1,10 +1,18 @@
 package com.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class InboundResponse {
+	
+	@JsonProperty("itemId")
 	private Long itemId;
+	@JsonProperty("areaId")
 	private Long areaId;
+	@JsonProperty("rackId")
 	private Long rackId;
+	@JsonProperty("LevelId")
 	private Long LevelId;
+	@JsonProperty("blockId")
 	private Long blockId;
 	
 	

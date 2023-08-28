@@ -1,12 +1,21 @@
 package com.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AddAreaRequest {
+	@JsonProperty("areaname")
 	private String areaname;
+	@JsonProperty("numberofrack")
 	private int numberofrack;
+	@JsonProperty("numberoflevelperrack")
 	private int numberoflevelperrack;
+	@JsonProperty("heightofeachlevel")
 	private float heightofeachlevel;
+	@JsonProperty("numberofblockperlevel")
 	private int numberofblockperlevel;
+	@JsonProperty("lengthofeachblock")
 	private float lengthofeachblock;
+	@JsonProperty("widthofeachblock")
 	private float widthofeachblock;
 	
 	

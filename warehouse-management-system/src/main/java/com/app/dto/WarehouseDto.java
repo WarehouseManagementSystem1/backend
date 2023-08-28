@@ -1,8 +1,11 @@
 package com.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class WarehouseDto {
-	
+	@JsonProperty("name")
 	private String name;
+	@JsonProperty("address")
 	private String address;
 	public String getName() {
 		return name;

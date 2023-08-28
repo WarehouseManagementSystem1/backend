@@ -1,7 +1,11 @@
 package com.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class BlockDto {
+	@JsonProperty("id")
 	private Long id;
+	@JsonProperty("blockNumber")
 	private int blockNumber;
 	public Long getId() {
 		return id;

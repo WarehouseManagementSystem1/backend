@@ -2,21 +2,41 @@ package com.app.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class ItemDto {
 	
+	@JsonProperty("id")
+	private Long id;
 	
+	@JsonProperty("blockid")
+	private Long blockid;
+	
+	@JsonProperty("levelid")
+	private Long levelid;
+	
+	@JsonProperty("rackid")
+	private Long rackid;
+	
+	@JsonProperty("areaid")
+	private Long areaid;
+	
+	@JsonProperty("warehouseid")
+	private Long warehouseid;
+	
+	public ItemDto() {
+		super();
+	}
 
-	
-	
+	public ItemDto(Long id, Long blockid, Long levelid, Long rackid, Long areaid, Long warehouseid) {
+		super();
+		this.id = id;
+		this.blockid = blockid;
+		this.levelid = levelid;
+		this.rackid = rackid;
+		this.areaid = areaid;
+		this.warehouseid = warehouseid;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -70,23 +90,6 @@ public class ItemDto {
 		return "ItemDto [id=" + id + ", blockid=" + blockid + ", levelid=" + levelid + ", rackid=" + rackid
 				+ ", areaid=" + areaid + ", warehouseid=" + warehouseid + "]";
 	}
-
-
-
-	private Long id;
 	
-	@JsonProperty("blockid")
-	private Long blockid;
 	
-	@JsonProperty("levelid")
-	private Long levelid;
-	
-	@JsonProperty("rackid")
-	private Long rackid;
-	
-	@JsonProperty("areaid")
-	private Long areaid;
-	
-	@JsonProperty("warehouseid")
-	private Long warehouseid;
 }

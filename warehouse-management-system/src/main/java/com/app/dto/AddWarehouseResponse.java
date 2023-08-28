@@ -1,7 +1,11 @@
 package com.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AddWarehouseResponse {
+	@JsonProperty("message")
 	private String message;
+	@JsonProperty("warehouseid")
 	private Long warehouseid;
 	public String getMessage() {
 		return message;
