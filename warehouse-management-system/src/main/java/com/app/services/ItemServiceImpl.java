@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dto.BlockDto;
 import com.app.dto.InBoundCheck;
+import com.app.dto.InboundResponse;
 import com.app.dto.ItemDto;
 import com.app.dto.ItemIdResponse;
 import com.app.dto.LevelDto;
@@ -185,8 +186,8 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public Boolean performInboundCheck(InBoundCheck request) {
-		List<LevelDto> levelList = levelRepository.findAllLevelByItemHeight(request.getItemheight());
+	public Boolean performInboundCheck(InBoundCheck request,Long warehouseId) {
+		List<LevelDto> levelList = levelRepository.findAllLevelByItemHeightAndWarehouseId(request.getItemheight(),warehouseId);
 		if(levelList.isEmpty()) {
 			return false;
 		}
@@ -200,6 +201,42 @@ public class ItemServiceImpl implements ItemService {
 		return true;
 	}
 
+	@Override
+	public InboundResponse performInbound(InBoundCheck request, Long warehouseId) {
+		List<LevelDto> levelList = levelRepository.findAllLevelByItemHeightAndWarehouseId(request.getItemheight(), warehouseId);
+		List<BlockDto> blockDtoList = new ArrayList<BlockDto>();
+		for(LevelDto l : levelList ) {
+			blockDtoList.addAll(blockRepository.findAllBlockByLevelIdAndItemLengthAndWidth(l.getId(), request.getItemwidth(), request.getItemlength()));
+		}
+		Block block = blockRepository.findById(blockDtoList.get(0).getId()).orElseThrow(()->new ResourceNotFoundException("invalid Block Id "));
+		block.setOccupiedStatus(OccupiedLevel.OCCUPIED);
+		block = blockRepository.save(block);
+		Item item = new Item();
+		item.setBlock(block);
+		item.setArea(block.getArea());
+		item.setItemHeight(request.getItemheight());
+		item.setItemLength(request.getItemlength());
+		item.setItemWidth(request.getItemwidth());
+		item.setLevel(block.getLevel());
+		item.setName(request.getItemname());
+		item.setRack(block.getRack());
+		item.setUnits(request.getUnits());
+		item.setWarehouse(block.getWarehouse());
+		item= itemRepository.save(item);
+		InboundResponse response = mapItemToInboundResponse(item);
+		return response;
+	}
+
+	private InboundResponse mapItemToInboundResponse(Item item) {
+		InboundResponse response = new InboundResponse();
+		response.setAreaId(item.getArea().getId());
+		response.setItemId(item.getId());
+		response.setBlockId(item.getBlock().getId());
+		response.setLevelId(item.getLevel().getId());
+		response.setRackId(item.getRack().getId());
+		return response;
+	}
+	
 
 }
 

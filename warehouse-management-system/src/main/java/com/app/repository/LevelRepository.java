@@ -13,6 +13,6 @@ public interface LevelRepository extends JpaRepository<Level, Long> {
 	@Query("SELECT new com.app.dto.LevelDto(l.id, l.levelNumber) FROM Level l WHERE l.rack.id = :rackId and l.levelHeight >= :itemHeight")
     List<LevelDto> findAllLevelByRackIdAndItemHeight(Long rackId,float itemHeight);
 	
-	@Query("SELECT new com.app.dto.LevelDto(l.id, l.levelNumber) FROM Level l WHERE l.levelHeight >= :itemHeight")
-    List<LevelDto> findAllLevelByItemHeight(float itemHeight);
+	@Query("SELECT new com.app.dto.LevelDto(l.id, l.levelNumber) FROM Level l WHERE l.rack.area.warehouse.id=:warehouseId and l.levelHeight >= :itemHeight")
+    List<LevelDto> findAllLevelByItemHeightAndWarehouseId(float itemHeight,Long warehouseId);
 }
