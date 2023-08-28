@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ItemDto;
 import com.app.dto.ItemIdResponse;
+import com.app.dto.OutBoundRequest;
+import com.app.dto.OutBoundResponse;
 import com.app.services.ItemService;
 
 @RestController
@@ -40,7 +42,11 @@ public class ItemController {
 		System.out.println(responseList);
 		return responseList;
 	}
+
 	
-//	@PostMapping("/outbound")
-//	public 
+	@PostMapping("/outbound/{warehouseId}")
+	public OutBoundResponse performOutBound(@RequestBody OutBoundRequest request) {
+		OutBoundResponse response = itemService.performOutBound(request);
+		return response;
+	}
 }
