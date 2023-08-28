@@ -223,6 +223,8 @@ public class ItemServiceImpl implements ItemService {
 		item.setUnits(request.getUnits());
 		item.setWarehouse(block.getWarehouse());
 		item= itemRepository.save(item);
+		Log log = new Log("In-bound", warehouseId, request.getItemname(), item.getId(), null, null, null, null, item.getArea().getId(), item.getRack().getId(), item.getLevel().getId(), item.getBlock().getId());
+		log =logRepository.save(log);
 		InboundResponse response = mapItemToInboundResponse(item);
 		return response;
 	}
