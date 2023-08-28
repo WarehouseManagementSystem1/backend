@@ -3,6 +3,7 @@ package com.app.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.app.dto.ItemIdResponse;
@@ -14,7 +15,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 	@Query("SELECT new com.app.dto.ItemIdResponse(i.id, i.name, i.units) FROM Item i WHERE i.warehouse.id = :warehouseId")
     List<ItemIdResponse> findItemIdsAndNamesByWarehouseId(Long warehouseId);
 	
-	
-//	@Query("SELECT i FROM Item i WHERE i.itemId = :itemId")
-//    Item findItemById(Long itemId);
+	@Modifying
+	@Query("DELETE FROM Item i WHERE i.id = :itemId")
+	void deleteItemById(Long itemId);
 }

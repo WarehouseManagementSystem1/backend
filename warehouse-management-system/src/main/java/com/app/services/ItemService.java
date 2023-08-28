@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.app.dto.ItemDto;
 import com.app.dto.ItemIdResponse;
+import com.app.dto.OutBoundRequest;
+import com.app.dto.OutBoundResponse;
 
 public interface ItemService {
 	ItemDto transfer(ItemDto detachedItem);
@@ -12,5 +14,6 @@ public interface ItemService {
 	float findItemHeightById(Long itemId);
 	float findItemLengthById(Long itemId);
 	float findItemWitdthById(Long itemId);
+	OutBoundResponse performOutBound(OutBoundRequest request);
 	
 }

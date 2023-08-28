@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dto.ItemDto;
 import com.app.dto.ItemIdResponse;
+import com.app.dto.OutBoundRequest;
+import com.app.dto.OutBoundResponse;
 import com.app.entities.Area;
 import com.app.entities.Block;
 import com.app.entities.Item;
@@ -157,6 +159,25 @@ public class ItemServiceImpl implements ItemService {
 		 Item item = itemRepository.findById(itemId).orElseThrow(() -> new ResourceNotFoundException("invalid item id "));
 		   
 	        return item.getItemWidth();
+	}
+
+	@Override
+	public OutBoundResponse performOutBound(OutBoundRequest request) {
+		OutBoundResponse response = new OutBoundResponse();
+		Item item = itemRepository.findById(request.getItemId()).orElseThrow(()->new ResourceNotFoundException("Invalid item id "));
+		response.setAreaId(item.getArea().getId());
+		response.setRackId(item.getRack().getId());
+		response.setLevelId(item.getLevel().getId());
+		response.setBlockId(item.getBlock().getId());
+		
+		Block block = item.getBlock();
+		block.setOccupiedStatus(OccupiedLevel.EMPTY);
+		blockRepository.save(block);
+		Log log = new Log("Out-Bound", item.getWarehouse().getId(), item.getName(), item.getId(), item.getArea().getId(), item.getRack().getId(), item.getLevel().getId(), item.getBlock().getId(), null, null, null, null);
+		logRepository.save(log);
+		itemRepository.deleteItemById(item.getId());
+		itemRepository.flush();
+		return response;
 	}
 
 
