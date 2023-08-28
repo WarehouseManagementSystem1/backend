@@ -2,6 +2,7 @@ package com.app.services;
 
 import java.util.List;
 
+import com.app.dto.InBoundCheck;
 import com.app.dto.ItemDto;
 import com.app.dto.ItemIdResponse;
 import com.app.dto.OutBoundRequest;
@@ -15,5 +16,6 @@ public interface ItemService {
 	float findItemLengthById(Long itemId);
 	float findItemWitdthById(Long itemId);
 	OutBoundResponse performOutBound(OutBoundRequest request);
+	Boolean performInboundCheck(InBoundCheck request);
 	
 }
