@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.InBoundCheck;
+import com.app.dto.InboundResponse;
 import com.app.dto.ItemDto;
 import com.app.dto.ItemIdResponse;
 import com.app.dto.OutBoundRequest;
@@ -52,10 +53,10 @@ public class ItemController {
 		return response;
 	}
 	
-	@PostMapping("/inbound/check/{warehouseId}")
-	public ResponseEntity<?> performInboundCheck(@RequestBody InBoundCheck request){
+	@GetMapping("/inbound/check/{warehouseId}")
+	public ResponseEntity<?> performInboundCheck(@RequestBody InBoundCheck request, @PathVariable Long warehouseId){
 
-			Boolean check = itemService.performInboundCheck(request);
+			Boolean check = itemService.performInboundCheck(request,warehouseId);
 			if(check==true)
 			{
 				return ResponseEntity.ok("you can add the provided Item !!"); 
@@ -63,5 +64,12 @@ public class ItemController {
 			else 
 				return ResponseEntity.status(HttpStatusCode.valueOf(404)).body("you can not add the provided Item !!");
 	}
+	
+	@PostMapping("inbound/checked/{warehouseId}")
+	public InboundResponse performInbound(@RequestBody InBoundCheck request, @PathVariable Long warehouseId) {
+		return itemService.performInbound(request, warehouseId);
+		
+	}
+	
 	
 }
