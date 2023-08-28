@@ -34,8 +34,8 @@ public class AreaController {
 		
 		try {
 			
-			areaService.addArea(warehouseId,request);
-			return ResponseEntity.ok("area , racks, levels, blocks added successfully !!");
+			Long areaId = areaService.addArea(warehouseId,request);
+			return ResponseEntity.ok("area , racks, levels, blocks added successfully !! with area Id : "+areaId);
 			
 		}
 		catch (Exception e) {

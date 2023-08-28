@@ -8,5 +8,5 @@ import com.app.dto.AreaDto;
 public interface AreaService {
 	List<AreaDto> getAllArea(Long warehouseId);
 	
-	void addArea(Long warehouseId,AddAreaRequest request);
+	Long addArea(Long warehouseId,AddAreaRequest request);
 }

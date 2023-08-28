@@ -1,8 +1,12 @@
 package com.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class RegisterResponse {
 	
+	@JsonProperty("message")
 	private String message;
+	@JsonProperty("ownerid")
 	private Long ownerid;
 	public String getMessage() {
 		return message;

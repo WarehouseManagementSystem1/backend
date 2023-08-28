@@ -3,18 +3,18 @@ package com.app.dto;
 import com.app.entities.UserType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.Getter;
-import lombok.Setter;
 
 
-@Getter
-@Setter
 public class SigninResponse {
-	
+	@JsonProperty("userId")
 	private Long userId;
+	@JsonProperty("firstname")
 	private String firstname;
+	@JsonProperty("lastname")
 	private String lastname;
+	@JsonProperty("userType")
 	private UserType userType;
+	@JsonProperty("warehouseId")
 	private Long warehouseId;
 	@JsonProperty("ownerid")
 	private Long ownerId;

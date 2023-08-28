@@ -1,7 +1,11 @@
 package com.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AreaDto {
+	@JsonProperty("id")
 	private Long id;
+	@JsonProperty("areaName")
 	private String areaName;
 	public Long getId() {
 		return id;
