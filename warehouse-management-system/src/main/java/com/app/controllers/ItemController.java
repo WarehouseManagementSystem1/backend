@@ -3,6 +3,8 @@ package com.app.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.InBoundCheck;
 import com.app.dto.ItemDto;
 import com.app.dto.ItemIdResponse;
+import com.app.dto.OutBoundRequest;
+import com.app.dto.OutBoundResponse;
 import com.app.services.ItemService;
 
 @RestController
@@ -29,6 +34,7 @@ public class ItemController {
 
 	@PostMapping("/transfer")
 	public ItemDto itemTransfer(@RequestBody ItemDto detachedItem){
+		System.out.println(detachedItem);
 		return itemService.transfer(detachedItem);
 	}
 
@@ -39,7 +45,23 @@ public class ItemController {
 		System.out.println(responseList);
 		return responseList;
 	}
+
+	@PostMapping("/outbound/{warehouseId}")
+	public OutBoundResponse performOutBound(@RequestBody OutBoundRequest request) {
+		OutBoundResponse response = itemService.performOutBound(request);
+		return response;
+	}
 	
-//	@PostMapping("/outbound")
-//	public 
+	@PostMapping("/inbound/check/{warehouseId}")
+	public ResponseEntity<?> performInboundCheck(@RequestBody InBoundCheck request){
+
+			Boolean check = itemService.performInboundCheck(request);
+			if(check==true)
+			{
+				return ResponseEntity.ok("you can add the provided Item !!"); 
+			}
+			else 
+				return ResponseEntity.status(HttpStatusCode.valueOf(404)).body("you can not add the provided Item !!");
+	}
+	
 }
