@@ -1,5 +1,6 @@
 package com.app.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,8 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custom_exception.ResourceNotFoundException;
+import com.app.dto.BlockDto;
+import com.app.dto.InBoundCheck;
 import com.app.dto.ItemDto;
 import com.app.dto.ItemIdResponse;
+import com.app.dto.LevelDto;
 import com.app.dto.OutBoundRequest;
 import com.app.dto.OutBoundResponse;
 import com.app.entities.Area;
@@ -178,6 +182,22 @@ public class ItemServiceImpl implements ItemService {
 		itemRepository.deleteItemById(item.getId());
 		itemRepository.flush();
 		return response;
+	}
+
+	@Override
+	public Boolean performInboundCheck(InBoundCheck request) {
+		List<LevelDto> levelList = levelRepository.findAllLevelByItemHeight(request.getItemheight());
+		if(levelList.isEmpty()) {
+			return false;
+		}
+		List<BlockDto> blockList = new ArrayList<>();
+		for(LevelDto l : levelList) {
+			blockList.addAll(blockRepository.findAllBlockByLevelIdAndItemLengthAndWidth(l.getId(), request.getItemwidth(), request.getItemlength()));
+		}
+		if(blockList.isEmpty()) {
+			return false;
+		}
+		return true;
 	}
 
 
