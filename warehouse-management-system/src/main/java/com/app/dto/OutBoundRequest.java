@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OutBoundRequest {
 	
-	@JsonProperty("ItemId")
+	@JsonProperty("itemid")
 	private Long ItemId;
 
 	public Long getItemId() {

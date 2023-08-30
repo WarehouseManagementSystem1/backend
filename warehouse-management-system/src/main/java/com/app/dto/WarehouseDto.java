@@ -3,9 +3,9 @@ package com.app.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class WarehouseDto {
-	@JsonProperty("name")
+	@JsonProperty("warehousename")
 	private String name;
-	@JsonProperty("address")
+	@JsonProperty("warehouseaddress")
 	private String address;
 	public String getName() {
 		return name;

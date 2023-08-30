@@ -56,6 +56,11 @@ public class UserServiceImpl implements UserService {
 		response.setOwnerId(user.getOwner().getId());
 		response.setUserId(user.getId());
 		response.setUserType(user.getUser());
+		Warehouse warehouse = user.getWarehouse();
+		if(warehouse==null) {
+			response.setWarehouseId(null);
+			return response;
+		}
 		response.setWarehouseId(user.getWarehouse().getId());
 		return response;
 	}
