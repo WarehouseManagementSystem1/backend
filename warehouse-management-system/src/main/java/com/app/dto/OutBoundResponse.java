@@ -3,13 +3,13 @@ package com.app.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OutBoundResponse {
-	@JsonProperty("areaId")
+	@JsonProperty("areaName")
 	private Long areaId;
-	@JsonProperty("rackId")
+	@JsonProperty("rackNumber")
 	private Long rackId;
-	@JsonProperty("levelId")
+	@JsonProperty("levelNumber")
 	private Long levelId;
-	@JsonProperty("blockId")
+	@JsonProperty("blockNumber")
 	private Long blockId;
 	public Long getAreaId() {
 		return areaId;

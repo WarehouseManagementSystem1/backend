@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import com.app.dto.OutBoundRequest;
 import com.app.dto.OutBoundResponse;
 import com.app.services.ItemService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/item")
 public class ItemController {
@@ -40,20 +42,24 @@ public class ItemController {
 	}
 
 	@GetMapping("/allitemidandname/{warehouseId}")
-	public List<ItemIdResponse> getAllItemIdAndName(@PathVariable Long warehouseId){
+	public ResponseEntity<?> getAllItemIdAndName(@PathVariable Long warehouseId){
 		
 		List<ItemIdResponse> responseList =itemService.getAllItemIdAndName(warehouseId);
 		System.out.println(responseList);
-		return responseList;
+		return ResponseEntity.ok(responseList);
 	}
 
 	@PostMapping("/outbound/{warehouseId}")
-	public OutBoundResponse performOutBound(@RequestBody OutBoundRequest request) {
+	public ResponseEntity<?> performOutBound(@RequestBody OutBoundRequest request) {
+		if(request.getItemId()==null) {
+			return ResponseEntity.badRequest().body("item id is null");
+		}
+		System.out.println(request.getItemId());
 		OutBoundResponse response = itemService.performOutBound(request);
-		return response;
+		return ResponseEntity.ok(response);
 	}
 	
-	@GetMapping("/inbound/check/{warehouseId}")
+	@PostMapping("/inbound/check/{warehouseId}")
 	public ResponseEntity<?> performInboundCheck(@RequestBody InBoundCheck request, @PathVariable Long warehouseId){
 
 			Boolean check = itemService.performInboundCheck(request,warehouseId);

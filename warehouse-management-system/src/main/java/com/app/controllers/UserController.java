@@ -3,6 +3,7 @@ package com.app.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import com.app.services.UserService;
 
 import jakarta.validation.Valid;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -36,10 +38,12 @@ public class UserController {
 	}
 	@PostMapping("/adduser")
 	 public ResponseEntity<String> createUser(@RequestBody AddUserDto newUser) {
-//			System.out.println("in side controller");
-//			System.out.println(newUser.getFirstname());
-//			System.out.println(newUser.getLastname());
-//			System.out.println(newUser);
+			System.out.println("in user controller");
+			System.out.println(newUser.getEmail());
+			System.out.println(newUser.getOwnerId());
+			System.out.println(newUser.getFirstname());
+			System.out.println(newUser.getLastname());
+			System.out.println(newUser);
 	        User createdUser = userService.createUser(newUser);
 	        if (createdUser != null) {
 	            return new ResponseEntity<>("User created successfully", HttpStatus.OK);
