@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custom_exception.ResourceNotFoundException;
+import com.app.dto.AllItemDto;
 import com.app.dto.BlockDto;
 import com.app.dto.InBoundCheck;
 import com.app.dto.InboundResponse;
@@ -53,17 +54,27 @@ public class ItemServiceImpl implements ItemService {
 	private LogRepository logRepository;
 	
 	@Override
-	public ItemDto transfer(ItemDto detachedItem) {
+	public AllItemDto transfer(ItemDto detachedItem) {
 		
 		Item updatedItem= updateDetails(detachedItem);
 		
-		ItemDto updatedItemDto=mapItemToItemDto(updatedItem);
+		AllItemDto updatedItemDto=mapItemToAllItemDto(updatedItem);
 		
 		return updatedItemDto;
 			
 			
 		}
 	
+	private AllItemDto mapItemToAllItemDto(Item updatedItem) {
+		return new AllItemDto(updatedItem.getId(), updatedItem.getName(), updatedItem.getUnits(), 
+				updatedItem.getBlock().getId(), updatedItem.getBlock().getBlockNumber(), 
+				updatedItem.getLevel().getId(), updatedItem.getLevel().getLevelNumber(),
+				updatedItem.getRack().getId(), updatedItem.getRack().getRackNumber(), 
+				updatedItem.getArea().getId(),updatedItem.getArea().getAreaName(),
+				updatedItem.getWarehouse().getId());
+		
+	}
+
 	public Item updateDetails(ItemDto detachedItem) {
 		Item item = itemRepository.findById(detachedItem.getId()).orElseThrow(()->new ResourceNotFoundException("Not a valid Id  "));
 		
@@ -73,23 +84,19 @@ public class ItemServiceImpl implements ItemService {
 		System.out.println(block);
 		block.setOccupiedStatus(OccupiedLevel.EMPTY);
 		
-		logRepository.save(new Log("Audit", detachedItem.getWarehouseid(), item.getName(), detachedItem.getId(), item.getArea().getId(), item.getRack().getId(), item.getLevel().getId(), item.getBlock().getId(), detachedItem.getAreaid(), detachedItem.getRackid(), detachedItem.getLevelid(), detachedItem.getBlockid()));
-		
 		Area newArea = areaRepository.findById(detachedItem.getAreaid()).orElse(null);
-        item.setArea(newArea);
-        
         Rack newRack = rackRepository.findById(detachedItem.getRackid()).orElse(null);
-        item.setRack(newRack);
-        
         Level newLevel = levelRepository.findById(detachedItem.getLevelid()).orElse(null);
-        item.setLevel(newLevel);
-        
         Block newBlock = blockRepository.findById(detachedItem.getBlockid()).orElse(null);
-        item.setBlock(newBlock);
-        
         newBlock.setOccupiedStatus(OccupiedLevel.OCCUPIED);
-        
-		return item;
+        logRepository.save(new Log("Audit", detachedItem.getWarehouseid(), item.getName(), item.getId(), item.getArea().getAreaName(), item.getRack().getRackNumber(), item.getLevel().getLevelNumber(), item.getBlock().getBlockNumber(), newArea.getAreaName(), newRack.getRackNumber(), newLevel.getLevelNumber(), newBlock.getBlockNumber()));
+        item.setArea(newArea);
+        item.setRack(newRack);
+        item.setLevel(newLevel);
+        item.setBlock(newBlock);
+        itemRepository.save(item);
+		blockRepository.save(newBlock);
+        return item;
 	}
 	
 	
@@ -122,15 +129,26 @@ public class ItemServiceImpl implements ItemService {
     }
 
 	@Override
-	public List<ItemDto> getAllItems(Long warehouseId) {
+	public List<AllItemDto> getAllItems(Long warehouseId) {
 		List<Item> items= (List<Item>) itemRepository.findByWarehouseId(warehouseId);
-		return mapItemsToItemDtos(items);
+		return mapItemsToAllItemDtos(items);
 		
 	}
 	
 	
 
-    public List<ItemDto> mapItemsToItemDtos(List<Item> items) {
+    private List<AllItemDto> mapItemsToAllItemDtos(List<Item> items) {
+		List<AllItemDto> allItemDtoList = new ArrayList<>();
+		for(Item i : items) {
+			AllItemDto a = new AllItemDto(i.getId(), i.getName(), i.getUnits(),i.getBlock().getId(), i.getBlock().getBlockNumber(), 
+					i.getLevel().getId(), i.getLevel().getLevelNumber(), i.getRack().getId(),
+					i.getRack().getRackNumber(), i.getArea().getId(), i.getArea().getAreaName(), i.getWarehouse().getId());
+			allItemDtoList.add(a);
+		}
+		return allItemDtoList;
+	}
+
+	public List<ItemDto> mapItemsToItemDtos(List<Item> items) {
         return items.stream()
             .map(this::mapItemToItemDto)
             .collect(Collectors.toList());
@@ -170,15 +188,15 @@ public class ItemServiceImpl implements ItemService {
 	public OutBoundResponse performOutBound(OutBoundRequest request) {
 		OutBoundResponse response = new OutBoundResponse();
 		Item item = itemRepository.findById(request.getItemId()).orElseThrow(()->new ResourceNotFoundException("Invalid item id "));
-		response.setAreaId(item.getArea().getId());
-		response.setRackId(item.getRack().getId());
-		response.setLevelId(item.getLevel().getId());
-		response.setBlockId(item.getBlock().getId());
+		response.setAreaName(item.getArea().getAreaName());
+		response.setRackNumber(item.getRack().getRackNumber());
+		response.setLevelNumber(item.getLevel().getLevelNumber());
+		response.setBlockNumber(item.getBlock().getBlockNumber());
 		
 		Block block = item.getBlock();
 		block.setOccupiedStatus(OccupiedLevel.EMPTY);
 		blockRepository.save(block);
-		Log log = new Log("Out-Bound", item.getWarehouse().getId(), item.getName(), item.getId(), item.getArea().getId(), item.getRack().getId(), item.getLevel().getId(), item.getBlock().getId(), null, null, null, null);
+		Log log = new Log("Out-Bound", item.getWarehouse().getId(), item.getName(), item.getId(), item.getArea().getAreaName(), item.getRack().getRackNumber(), item.getLevel().getLevelNumber(), item.getBlock().getBlockNumber(), null, null, null, null);
 		logRepository.save(log);
 		itemRepository.deleteItemById(item.getId());
 		itemRepository.flush();
@@ -223,7 +241,7 @@ public class ItemServiceImpl implements ItemService {
 		item.setUnits(request.getUnits());
 		item.setWarehouse(block.getWarehouse());
 		item= itemRepository.save(item);
-		Log log = new Log("In-bound", warehouseId, request.getItemname(), item.getId(), null, null, null, null, item.getArea().getId(), item.getRack().getId(), item.getLevel().getId(), item.getBlock().getId());
+		Log log = new Log("In-bound", warehouseId, request.getItemname(), item.getId(), null, null, null, null, item.getArea().getAreaName(), item.getRack().getRackNumber(), item.getLevel().getLevelNumber(), item.getBlock().getBlockNumber());
 		log =logRepository.save(log);
 		InboundResponse response = mapItemToInboundResponse(item);
 		return response;

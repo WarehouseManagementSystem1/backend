@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.AllItemDto;
 import com.app.dto.InBoundCheck;
 import com.app.dto.InboundResponse;
 import com.app.dto.ItemDto;
@@ -30,13 +31,13 @@ public class ItemController {
 	private ItemService itemService;
 	
 	@GetMapping("/allitem/{warehouseId}")
-	public List<ItemDto> fetchAllItems(@PathVariable Long warehouseId) {
+	public List<AllItemDto> fetchAllItems(@PathVariable Long warehouseId) {
 		System.out.println("in fetch all Items");
 		return itemService.getAllItems(warehouseId);
 	}
 
 	@PostMapping("/transfer")
-	public ItemDto itemTransfer(@RequestBody ItemDto detachedItem){
+	public AllItemDto itemTransfer(@RequestBody ItemDto detachedItem){
 		System.out.println(detachedItem);
 		return itemService.transfer(detachedItem);
 	}

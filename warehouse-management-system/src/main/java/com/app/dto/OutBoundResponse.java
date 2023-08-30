@@ -4,44 +4,75 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OutBoundResponse {
 	@JsonProperty("areaName")
-	private Long areaId;
+	private String areaName;
 	@JsonProperty("rackNumber")
-	private Long rackId;
+	private int rackNumber;
 	@JsonProperty("levelNumber")
-	private Long levelId;
+	private int levelNumber;
 	@JsonProperty("blockNumber")
-	private Long blockId;
-	public Long getAreaId() {
-		return areaId;
+	private int blockNumber;
+	
+	
+	
+	public String getAreaName() {
+		return areaName;
 	}
-	public void setAreaId(Long areaId) {
-		this.areaId = areaId;
+
+
+
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
 	}
-	public Long getRackId() {
-		return rackId;
+
+
+
+	public int getRackNumber() {
+		return rackNumber;
 	}
-	public void setRackId(Long rackId) {
-		this.rackId = rackId;
+
+
+
+	public void setRackNumber(int rackNumber) {
+		this.rackNumber = rackNumber;
 	}
-	public Long getLevelId() {
-		return levelId;
+
+
+
+	public int getLevelNumber() {
+		return levelNumber;
 	}
-	public void setLevelId(Long levelId) {
-		this.levelId = levelId;
+
+
+
+	public void setLevelNumber(int levelNumber) {
+		this.levelNumber = levelNumber;
 	}
-	public Long getBlockId() {
-		return blockId;
+
+
+
+	public int getBlockNumber() {
+		return blockNumber;
 	}
-	public void setBlockId(Long blockId) {
-		this.blockId = blockId;
+
+
+
+	public void setBlockNumber(int blockNumber) {
+		this.blockNumber = blockNumber;
 	}
-	public OutBoundResponse(Long areaId, Long rackId, Long levelId, Long blockId) {
+
+
+	
+
+	public OutBoundResponse(String areaName, int rackNumber, int levelNumber, int blockNumber) {
 		super();
-		this.areaId = areaId;
-		this.rackId = rackId;
-		this.levelId = levelId;
-		this.blockId = blockId;
+		this.areaName = areaName;
+		this.rackNumber = rackNumber;
+		this.levelNumber = levelNumber;
+		this.blockNumber = blockNumber;
 	}
+
+
+
 	public OutBoundResponse() {
 		super();
 		

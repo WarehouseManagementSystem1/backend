@@ -11,22 +11,22 @@ public class LogResponse {
 	private String itemName;
 	@JsonProperty("itemId")
 	private Long itemId;
-	@JsonProperty("initialAreaId")
-	private Long initialAreaId;
-	@JsonProperty("initialRackId")
-	private Long initialRackId;
-	@JsonProperty("initialLevelId")
-	private Long initialLevelId;
-	@JsonProperty("initialBlockId")
-	private Long initialBlockId;
-	@JsonProperty("finalAreaId")
-	private Long finalAreaId;
-	@JsonProperty("finalRackId")
-	private Long finalRackId;
-	@JsonProperty("finalLevelId")
-	private Long finalLevelId;
-	@JsonProperty("finalBlockId")
-	private Long finalBlockId;
+	@JsonProperty("initialAreaName")
+	private String initialAreaName;
+	@JsonProperty("initialRackNumber")
+	private Long initialRackNumber;
+	@JsonProperty("initialLevelNumber")
+	private Long initialLevelNumber;
+	@JsonProperty("initialBlockNumber")
+	private Long initialBlockNumber;
+	@JsonProperty("finalAreaName")
+	private String finalAreaName;
+	@JsonProperty("finalRackNumber")
+	private Long finalRackNumber;
+	@JsonProperty("finalLevelNumber")
+	private Long finalLevelNumber;
+	@JsonProperty("finalBlockNumber")
+	private Long finalBlockNumber;
 	public String getTransactionType() {
 		return transactionType;
 	}
@@ -51,73 +51,74 @@ public class LogResponse {
 	public void setItemId(Long itemId) {
 		this.itemId = itemId;
 	}
-	public Long getInitialAreaId() {
-		return initialAreaId;
+	public String getInitialAreaName() {
+		return initialAreaName;
 	}
-	public void setInitialAreaId(Long initialAreaId) {
-		this.initialAreaId = initialAreaId;
+	public void setInitialAreaName(String initialAreaName) {
+		this.initialAreaName = initialAreaName;
 	}
-	public Long getInitialRackId() {
-		return initialRackId;
+	public Long getInitialRackNumber() {
+		return initialRackNumber;
 	}
-	public void setInitialRackId(Long initialRackId) {
-		this.initialRackId = initialRackId;
+	public void setInitialRackNumber(Long initialRackNumber) {
+		this.initialRackNumber = initialRackNumber;
 	}
-	public Long getInitialLevelId() {
-		return initialLevelId;
+	public Long getInitialLevelNumber() {
+		return initialLevelNumber;
 	}
-	public void setInitialLevelId(Long initialLevelId) {
-		this.initialLevelId = initialLevelId;
+	public void setInitialLevelNumber(Long initialLevelNumber) {
+		this.initialLevelNumber = initialLevelNumber;
 	}
-	public Long getInitialBlockId() {
-		return initialBlockId;
+	public Long getInitialBlockNumber() {
+		return initialBlockNumber;
 	}
-	public void setInitialBlockId(Long initialBlockId) {
-		this.initialBlockId = initialBlockId;
+	public void setInitialBlockNumber(Long initialBlockNumber) {
+		this.initialBlockNumber = initialBlockNumber;
 	}
-	public Long getFinalAreaId() {
-		return finalAreaId;
+	public String getFinalAreaName() {
+		return finalAreaName;
 	}
-	public void setFinalAreaId(Long finalAreaId) {
-		this.finalAreaId = finalAreaId;
+	public void setFinalAreaName(String finalAreaName) {
+		this.finalAreaName = finalAreaName;
 	}
-	public Long getFinalRackId() {
-		return finalRackId;
+	public Long getFinalRackNumber() {
+		return finalRackNumber;
 	}
-	public void setFinalRackId(Long finalRackId) {
-		this.finalRackId = finalRackId;
+	public void setFinalRackNumber(Long finalRackNumber) {
+		this.finalRackNumber = finalRackNumber;
 	}
-	public Long getFinalLevelId() {
-		return finalLevelId;
+	public Long getFinalLevelNumber() {
+		return finalLevelNumber;
 	}
-	public void setFinalLevelId(Long finalLevelId) {
-		this.finalLevelId = finalLevelId;
+	public void setFinalLevelNumber(Long finalLevelNumber) {
+		this.finalLevelNumber = finalLevelNumber;
 	}
-	public Long getFinalBlockId() {
-		return finalBlockId;
+	public Long getFinalBlockNumber() {
+		return finalBlockNumber;
 	}
-	public void setFinalBlockId(Long finalBlockId) {
-		this.finalBlockId = finalBlockId;
+	public void setFinalBlockNumber(Long finalBlockNumber) {
+		this.finalBlockNumber = finalBlockNumber;
 	}
-	public LogResponse(String transactionType, Long warehouseId, String itemName, Long itemId, Long initialAreaId,
-			Long initialRackId, Long initialLevelId, Long initialBlockId, Long finalAreaId, Long finalRackId,
-			Long finalLevelId, Long finalBlockId) {
+	public LogResponse(String transactionType, Long warehouseId, String itemName, Long itemId, String initialAreaName,
+			Long initialRackNumber, Long initialLevelNumber, Long initialBlockNumber, String finalAreaName,
+			Long finalRackNumber, Long finalLevelNumber, Long finalBlockNumber) {
 		super();
 		this.transactionType = transactionType;
 		this.warehouseId = warehouseId;
 		this.itemName = itemName;
 		this.itemId = itemId;
-		this.initialAreaId = initialAreaId;
-		this.initialRackId = initialRackId;
-		this.initialLevelId = initialLevelId;
-		this.initialBlockId = initialBlockId;
-		this.finalAreaId = finalAreaId;
-		this.finalRackId = finalRackId;
-		this.finalLevelId = finalLevelId;
-		this.finalBlockId = finalBlockId;
+		this.initialAreaName = initialAreaName;
+		this.initialRackNumber = initialRackNumber;
+		this.initialLevelNumber = initialLevelNumber;
+		this.initialBlockNumber = initialBlockNumber;
+		this.finalAreaName = finalAreaName;
+		this.finalRackNumber = finalRackNumber;
+		this.finalLevelNumber = finalLevelNumber;
+		this.finalBlockNumber = finalBlockNumber;
 	}
 	public LogResponse() {
 		super();
+		
 	}
 	
 	
