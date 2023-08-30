@@ -5,17 +5,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AddAreaRequest {
 	@JsonProperty("areaname")
 	private String areaname;
-	@JsonProperty("numberofrack")
+	@JsonProperty("numracks")
 	private int numberofrack;
-	@JsonProperty("numberoflevelperrack")
+	@JsonProperty("numLevelsperrack")
 	private int numberoflevelperrack;
-	@JsonProperty("heightofeachlevel")
+	@JsonProperty("levelheight")
 	private float heightofeachlevel;
-	@JsonProperty("numberofblockperlevel")
+	@JsonProperty("numblocksperlevel")
 	private int numberofblockperlevel;
-	@JsonProperty("lengthofeachblock")
+	@JsonProperty("blocklength")
 	private float lengthofeachblock;
-	@JsonProperty("widthofeachblock")
+	@JsonProperty("blockwidth")
 	private float widthofeachblock;
 	
 	

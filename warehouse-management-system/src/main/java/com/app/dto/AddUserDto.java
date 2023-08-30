@@ -8,76 +8,142 @@ public class AddUserDto {
 	private String firstname;
 	@JsonProperty("lastname")
 	private String lastname;
-	@JsonProperty("email")
+	@JsonProperty("usermail")
 	private String email;
-	@JsonProperty("phoneNumber")
+	@JsonProperty("contact")
 	private String phoneNumber;
-	@JsonProperty("password")
+	@JsonProperty("pass")
 	private String password;
-	@JsonProperty("userType")
+	@JsonProperty("usertype")
 	private String userType;
-	@JsonProperty("ownerId")
+	@JsonProperty("ownerid")
 	private Long ownerId;
-	@JsonProperty("warehouseId")
+	@JsonProperty("warehouseid")
 	private Long warehouseId;
 	
 	
 	
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	public String getUserType() {
-		return userType;
-	}
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
+	
 	public String getFirstname() {
 		return firstname;
 	}
+
+
+
+
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
+
+
+
+
 	public String getLastname() {
 		return lastname;
 	}
+
+
+
+
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+
+
+
+
 	public String getEmail() {
 		return email;
 	}
+
+
+
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+
+
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+
+
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
+
+
 	public String getPassword() {
 		return password;
 	}
+
+
+
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+
+
+
+	public String getUserType() {
+		return userType;
+	}
+
+
+
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+
+
+
 	public Long getOwnerId() {
 		return ownerId;
 	}
+
+
+
+
 	public void setOwnerId(Long ownerId) {
 		this.ownerId = ownerId;
 	}
+
+
+
+
 	public Long getWarehouseId() {
 		return warehouseId;
 	}
+
+
+
+
 	public void setWarehouseId(Long warehouseId) {
 		this.warehouseId = warehouseId;
 	}
-	
+
+
+
+
 	public AddUserDto() {
 		super();
 		
 	}
+
+
+
+
 	public AddUserDto(String firstname, String lastname, String email, String phoneNumber, String password,
 			String userType, Long ownerId, Long warehouseId) {
 		super();
@@ -90,12 +156,7 @@ public class AddUserDto {
 		this.ownerId = ownerId;
 		this.warehouseId = warehouseId;
 	}
-	@Override
-	public String toString() {
-		return "AddUserDto [firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + ", phoneNumber="
-				+ phoneNumber + ", password=" + password + ", userType=" + userType + ", ownerId=" + ownerId
-				+ ", warehouseId=" + warehouseId + "]";
-	}
+	
 	
 	
 	

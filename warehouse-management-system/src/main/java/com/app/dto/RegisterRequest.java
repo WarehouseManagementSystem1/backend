@@ -7,11 +7,11 @@ public class RegisterRequest {
 	private String firstname;
 	@JsonProperty("lastname")
 	private String lastname;
-	@JsonProperty("contactnumber")
+	@JsonProperty("contact")
 	private String contactnumber;
-	@JsonProperty("email")
+	@JsonProperty("usermail")
 	private String email;
-	@JsonProperty("password")
+	@JsonProperty("pass")
 	private String password;
 	
 	

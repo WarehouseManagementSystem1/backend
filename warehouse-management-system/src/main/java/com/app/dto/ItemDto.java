@@ -5,19 +5,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ItemDto {
 	
-	@JsonProperty("id")
+	@JsonProperty("itemId")
 	private Long id;
 	
-	@JsonProperty("blockid")
+	@JsonProperty("blockNumber")
 	private Long blockid;
 	
-	@JsonProperty("levelid")
+	@JsonProperty("levelNumber")
 	private Long levelid;
 	
-	@JsonProperty("rackid")
+	@JsonProperty("rackNumber")
 	private Long rackid;
 	
-	@JsonProperty("areaid")
+	@JsonProperty("areaName")
 	private Long areaid;
 	
 	@JsonProperty("warehouseid")
