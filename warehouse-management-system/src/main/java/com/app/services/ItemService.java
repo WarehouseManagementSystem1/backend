@@ -2,6 +2,7 @@ package com.app.services;
 
 import java.util.List;
 
+import com.app.dto.AllItemDto;
 import com.app.dto.InBoundCheck;
 import com.app.dto.InboundResponse;
 import com.app.dto.ItemDto;
@@ -10,8 +11,8 @@ import com.app.dto.OutBoundRequest;
 import com.app.dto.OutBoundResponse;
 
 public interface ItemService {
-	ItemDto transfer(ItemDto detachedItem);
-	List<ItemDto> getAllItems(Long warehouseId);
+	AllItemDto transfer(ItemDto detachedItem);
+	List<AllItemDto> getAllItems(Long warehouseId);
 	List<ItemIdResponse>getAllItemIdAndName(Long warehouseId);
 	float findItemHeightById(Long itemId);
 	float findItemLengthById(Long itemId);

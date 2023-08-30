@@ -8,19 +8,19 @@ public class ItemDto {
 	@JsonProperty("itemId")
 	private Long id;
 	
-	@JsonProperty("blockNumber")
+	@JsonProperty("blockId")
 	private Long blockid;
 	
-	@JsonProperty("levelNumber")
+	@JsonProperty("levelId")
 	private Long levelid;
 	
-	@JsonProperty("rackNumber")
+	@JsonProperty("rackId")
 	private Long rackid;
 	
-	@JsonProperty("areaName")
+	@JsonProperty("areaId")
 	private Long areaid;
 	
-	@JsonProperty("warehouseid")
+	@JsonProperty("warehouseId")
 	private Long warehouseid;
 	
 	public ItemDto() {

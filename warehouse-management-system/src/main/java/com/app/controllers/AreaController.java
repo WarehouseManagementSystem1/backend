@@ -27,7 +27,9 @@ public class AreaController {
 	
 	@GetMapping("/{warehouseId}")
 	public List<AreaDto> getAllArea(@PathVariable Long warehouseId){
+		System.out.println(warehouseId);
 		List<AreaDto> responseList = areaService.getAllArea(warehouseId);
+		System.out.println(responseList);
 		return responseList;
 	}
 	
